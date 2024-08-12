@@ -21,7 +21,7 @@ export default function LoginForm() {
 
      // Affichage
     return (
-    <div>
+    <LoginFormStyled>
         <h1>Bienvenue chez nous !</h1>
         <br />
         <h2>Connectez-vous</h2>
@@ -35,6 +35,11 @@ export default function LoginForm() {
             />
           <button>Accédez à mon espace</button>
         </form>
-    </div>
+    </LoginFormStyled>
   )
 }
+
+const LoginFormStyled = styled.div`
+     border: 1px solid blue;
+     background: green;
+`;
