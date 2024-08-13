@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
-import { theme } from "../../../theme"
+// import { theme } from "../../../theme"
 
 export default function LoginForm() {
     // state
