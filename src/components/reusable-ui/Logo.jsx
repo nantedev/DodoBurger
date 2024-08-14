@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export default function Logo() {
   return (
     <LogoStyled>
-      <h1>Dodo</h1> 
+      <h1>Le Dodo</h1> 
       <img src="/images/logo-burger.png" alt="logo-dodo-burger" />
       <h1>Burger</h1>
       </LogoStyled>

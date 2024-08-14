@@ -2,6 +2,8 @@ import { useState } from "react"
 import { BsPersonCircle } from "react-icons/bs"
 import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
+import { IoChevronForwardSharp } from "react-icons/io5";
+
 // import { theme } from "../../../theme"
 
 export default function LoginForm() {
@@ -28,7 +30,7 @@ export default function LoginForm() {
           <hr />
           <h2>Connectez-vous</h2>
         </div>
-        <div className="input-container">
+        <div className="input-with-icon">
           <BsPersonCircle className="icon"/>
             <input
               value={inputValue}
@@ -38,15 +40,15 @@ export default function LoginForm() {
               required
               />
         </div>
-          <div>
-            <button>Accédez à mon espace</button>
-          </div>
+          <button className="button-whith-icon">
+            <span>Accédez à mon espace</span>
+            <IoChevronForwardSharp />
+          </button>
     </LoginFormStyled>
   )
 }
 
-const LoginFormStyled = styled.div`
-  background: green;
+const LoginFormStyled = styled.form`
   text-align: center;
   max-width: 500px;
   min-width: 400px;
@@ -72,7 +74,7 @@ const LoginFormStyled = styled.div`
     font-size: 36px;
   }
 
-  .input-container {
+  .input-with-icon {
     background-color: #fff;
     border-radius: 5px;
     display: flex;
@@ -90,10 +92,51 @@ const LoginFormStyled = styled.div`
     border: none;
     font-size: 15px;
     color: #17161a;
+    width: 100%;
     }
+
     &::placeholder {
     background: white;
     color: lightgrey;
+    }
+  }
+
+  .button-whith-icon {
+    width: 100%;
+    background-color: #FB9E1C;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    white-space: nowrap;
+    text-decoration: none;
+    line-height: 1;
+
+    padding: 18px 24px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 800;
+    color: white;
+    border: 1px solid #FB9E1C;
+
+    &:hover:not(:disabled) {
+      background-color: white;
+      color: #FB9E1C;
+      border: 1px solid #FB9E1C;
+      transition: all 200ms ease-out;
+    }
+
+    &:disableld {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 15px;
+      margin-left: 10px;
     }
   }
 `;
