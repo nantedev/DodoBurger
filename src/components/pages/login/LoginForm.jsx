@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { BsPersonCircle } from "react-icons/bs"
 import { IoChevronForwardSharp } from "react-icons/io5"
-import TextInput from "./TextInput";
+import TextInput from "../../reusable-ui/TextInput";
 
 export default function LoginForm() {
     // state
     const [inputValue, setInputValue] = useState("")
+    const [motDePasse, setMotDePasse] = useState("")
     const navigate = useNavigate()
 
     // comportements
@@ -37,7 +38,7 @@ export default function LoginForm() {
               required
               Icon={<BsPersonCircle className="icon"/>}
               />
-
+              
             <button className="button-whith-icon">
               <span>Accédez à mon espace</span>
               <IoChevronForwardSharp />
