@@ -2,13 +2,11 @@ import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import Navbar from "./navbar"
 import Main from "./Main"
+import { theme } from "../../../theme"
 
 export default function OrderPage () {
     // state
     const { username } = useParams()
-
-    // comportement
-
     // affichage
     return (
         <OrderPageStyled>

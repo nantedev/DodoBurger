@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components';
 import { theme } from '../../theme';
 
-export default function Logo({ className }) {
+export default function Logo({ className, onClick }) {
   return (
-    <LogoStyled className={ className }>
+    <LogoStyled className={ className } onClick={onClick}>
       <h1>Le Dodo</h1> 
       <img src="/images/logo-burger.png" alt="logo-dodo-burger" />
       <h1>Burger</h1>
