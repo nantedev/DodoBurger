@@ -63,13 +63,13 @@ const LoginFormStyled = styled.form`
   }
 
   h1 {
-    color: ${theme.fonts.colors.white};
+    color: ${theme.colors.white};
     font-size: ${theme.fonts.size.P5};
   }
 
   h2 {
     margin: 20px 10px 10px;
-    color: ${theme.fonts.colors.white};
+    color: ${theme.colors.white};
     font-size: ${theme.fonts.size.P4};
   }
 
