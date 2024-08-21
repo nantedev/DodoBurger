@@ -50,7 +50,7 @@ export const fakeMenu2 = [
   {
     id: 4,
     imageSource: "/images/drink1.png",
-    title: "Coke 25cl",
+    title: "Coca 50cl",
     price: 3.568,
     quantity: 0,
     isAvailable: true,
@@ -59,7 +59,7 @@ export const fakeMenu2 = [
   {
     id: 5,
     imageSource: "/images/drink2.png",
-    title: "Pepsi 25cl",
+    title: "Pepsi 50cl",
     price: 3.487,
     quantity: 0,
     isAvailable: true,
