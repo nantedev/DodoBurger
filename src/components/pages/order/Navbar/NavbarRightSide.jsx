@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import Profile from "./Profile";
+import ToggleButton from "../../../reusable-ui/ToggleButton";
 
 export default function NavbarRightSide({ username }) {
   return (
     <NavbarRightSideStyled>
-        {/* <div className="admin-button">Admin Button</div> */}
-        <Profile username={ username }/>
+        <ToggleButton 
+        labelIfChecked="Désactiver le mode Admin"
+        labelIfUnchecked="Activer le mode Admin"
+        className={"toggle-button"}
+        />
+        <Profile username={ username } className={"profile"}/>
     </NavbarRightSideStyled>
   )
 }
@@ -13,13 +18,9 @@ export default function NavbarRightSide({ username }) {
 const NavbarRightSideStyled = styled.div`
     display: flex;
     align-items: center;
-    padding-right: 50px;
+    padding-right: 50px;F06
 
-    /* .admin-button {
-        background-color: lightblue;
-    } */
-
-    .profile {
-        background-color: yellow;
+    .toggle-button {
+      border: 1px solid red;
     }
 `
