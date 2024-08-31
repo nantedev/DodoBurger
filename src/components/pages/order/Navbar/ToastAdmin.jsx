@@ -5,13 +5,11 @@ import { ToastContainer } from 'react-toastify'
 
 export default function ToastAdmin() {
   return (
-    <ToastAdminStyled>
-        <ToastContainer className="toaster" bodyClassName="body-toast"/>
-    </ToastAdminStyled>
+        <ToastAdminStyled className="toaster" bodyClassName="body-toast"/>
   )
 }
 
-const ToastAdminStyled = styled.div`
+const ToastAdminStyled = styled(ToastContainer)`
       .toaster {
     max-width: 300px;
   }
