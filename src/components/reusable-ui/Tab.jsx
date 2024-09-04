@@ -43,6 +43,7 @@ const TabStyled = styled.button`
     border-bottom-right-radius: 0px;
 
     &:hover {
+      text-decoration: underline;
       border-bottom: 2px solid ${theme.colors.white};
     }
 
