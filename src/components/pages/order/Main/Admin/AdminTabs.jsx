@@ -46,7 +46,7 @@ const tabs = getTabsConfig(currentTabSelected)
 
 
 const AdminTabsStyled = styled.div`
-  /* border: 1px solid red; */
+
   display: flex;
   padding: 0 20px;
 
