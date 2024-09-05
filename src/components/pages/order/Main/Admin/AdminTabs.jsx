@@ -4,7 +4,7 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { theme } from "../../../../../theme";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
-import { getTabsConfig } from "./getTabsConfig";
+import { tabsConfig } from "./tabsConfig";
 
 export default function AdminTabs() {
   
@@ -21,7 +21,7 @@ export default function AdminTabs() {
       setCurrentTabSelected(tabSelected) //refresh the selected tab
     }
 
-const tabs = getTabsConfig(currentTabSelected)
+const tabs = tabsConfig
 
   return (
     <AdminTabsStyled>
@@ -34,6 +34,7 @@ const tabs = getTabsConfig(currentTabSelected)
 
         { tabs.map((tab) => (
                     <Tab 
+                    key={tab.index}
                     label={tab.label}
                     Icon={tab.Icon} 
                     onClick={() => selectTab(tab.index)}
