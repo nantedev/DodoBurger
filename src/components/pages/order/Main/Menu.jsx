@@ -9,8 +9,13 @@ const IMAGE_BY_DEFAUT = "/images/coming-soon.png"
 
 export default function Menu() {
   
-const { menu, isModeAdmin, handleDelete } = useContext(OrderContext)
+const { menu, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext)
 
+
+  if(menu.length === 0) return  <div>
+    <span>Pas de produit</span>
+    <button onClick={resetMenu}>Générer de nouveaux produits</button>
+  </div>
 
     return (
     <StyledMenu>
