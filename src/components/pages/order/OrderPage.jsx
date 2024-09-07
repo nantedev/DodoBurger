@@ -9,21 +9,29 @@ import { fakeMenu } from "../../../fakeData/fakeMenu.jsx"
 
 export default function OrderPage () {
    
-  // state
+    //State
     const [isModeAdmin, setIsModeAdmin] = useState(true)
     const [isCollapsed, setIsCollapsed]= useState(false)
     const [currentTabSelected, setCurrentTabSelected] = useState("add")
     const [menu, setMenu] = useState(fakeMenu.MEDIUM)
     
- 
+    //Comportements
 
-    // comportements
     const handleAddProduct = (newProduct) => {
-      // 1. copie du tableau
+      //Copie du tableau
       const menuCopy = [...menu]
-      // 2. manip copie du tableau
+      //Manip copie du tableau
       const menuUpdated = [newProduct, ...menuCopy]
-      // 3. update State
+      //Update State
+      setMenu(menuUpdated)
+    }
+
+    const handleDelete = (idOfProductToDelete) => {
+      //Copie du state
+      const menuCopy = [...menu]
+      //Manip copie de state
+      const menuUpdated = menuCopy.filter((product) =>  product.id !== idOfProductToDelete)
+      //Update State
       setMenu(menuUpdated)
     }
 
@@ -35,10 +43,11 @@ export default function OrderPage () {
       currentTabSelected,
       setCurrentTabSelected,
       menu,
+      handleDelete,
       handleAddProduct,
         }
 
-    // affichage
+    //Affichage
     return (
         <OrderContext.Provider value={orderContextValue}>
           <OrderPageStyled>
