@@ -5,6 +5,8 @@ import Card from "../../../reusable-ui/Card"
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 
+const IMAGE_BY_DEFAUT = "/images/coming-soon.png"
+
 export default function Menu() {
   
 const { menu } = useContext(OrderContext)
@@ -17,7 +19,7 @@ const { menu } = useContext(OrderContext)
           <Card
             key={id}
             title={title}
-            imageSource={imageSource}
+            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAUT}
             leftDescription={formatPrice(price)}
           />
         )
