@@ -9,7 +9,7 @@ const IMAGE_BY_DEFAUT = "/images/coming-soon.png"
 
 export default function Menu() {
   
-const { menu } = useContext(OrderContext)
+const { menu, isModeAdmin } = useContext(OrderContext)
 
 
     return (
@@ -21,6 +21,7 @@ const { menu } = useContext(OrderContext)
             title={title}
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAUT}
             leftDescription={formatPrice(price)}
+            hasDeleteButton={isModeAdmin}
           />
         )
       })}
