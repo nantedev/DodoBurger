@@ -22,7 +22,6 @@ export default function Main() {
 }
 
 const MainStyled  = styled.main`
-    border: 3px solid green; 
     background: ${theme.colors.background_white};
     height: calc(95vh - 10vh);
     flex: 1;

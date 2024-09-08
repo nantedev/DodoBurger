@@ -92,7 +92,6 @@ export default function AddForm() {
 }
 
 const AddFormStyled = styled.form`
-  border: 2px solid red;
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);
