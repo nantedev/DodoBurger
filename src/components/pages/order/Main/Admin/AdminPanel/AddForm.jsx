@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import OrderContext from '../../../../../../context/OrderContext';
 import { FiCheck } from 'react-icons/fi';
+import {theme} from '../../../../../../theme'
 
 const EMPTY_PRODUCT = {
   id: "", 
@@ -44,7 +45,7 @@ export default function AddForm() {
        <div className="image-preview">
         {newProduct.imageSource ? 
           <img src={newProduct.imageSource} alt={newProduct.imageSource} /> : 
-          <div>Aucune Image</div> }
+          <div className='empty-image'>Aucune Image</div> }
         </div>
       <div className="input-fields">
         <input name="title" 
@@ -89,9 +90,10 @@ const AddFormStyled = styled.form`
     "image-preview input-fields"
     "image-preview input-fields"
     ".             submit";
-
   height: 100%;
   width: 70%;
+  grid-column-gap: 20px;
+  grid-row-gap: 8px;
 
   .image-preview {
     grid-area: image-preview ;
@@ -105,6 +107,21 @@ const AddFormStyled = styled.form`
       object-fit: contain;
       object-position: center;
     }
+
+
+  .empty-image {
+    /* background-color: green; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid ${theme.colors.greyLight};
+    line-height: 1.5;
+    color: ${theme.colors.greySemiDark};
+    border-radius: ${theme.borderRadius.round};
+  }
+
   }
 
   .input-fields{
