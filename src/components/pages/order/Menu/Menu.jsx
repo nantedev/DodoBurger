@@ -1,13 +1,25 @@
-import { useState } from "react";
 import styled from "styled-components";
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
 import { formatPrice } from "../../../../utils/maths"
 import { theme } from "../../../../theme";
 import Card from "../../../reusable-ui/Card"
+import { useContext } from "react";
+import OrderContext from "../../../../context/OrderContext";
+import EmptyMenuAdmin from "./EmptyMenuAdmin";
+import EmptyMenuClient from "./EmptyMenuClient";
+
+const IMAGE_BY_DEFAUT = "/images/coming-soon.png"
 
 export default function Menu() {
   
-  const [menu, setMenu] = useState(fakeMenu2)
+const { menu, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext)
+
+
+  if(menu.length === 0) {
+    if (!isModeAdmin) return <EmptyMenuClient />
+    return <EmptyMenuAdmin onReset={resetMenu}/>
+  }
+
+  
 
     return (
     <StyledMenu>
@@ -16,8 +28,10 @@ export default function Menu() {
           <Card
             key={id}
             title={title}
-            imageSource={imageSource}
+            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAUT}
             leftDescription={formatPrice(price)}
+            hasDeleteButton={isModeAdmin}
+            onDelete={() => handleDelete(id)}
           />
         )
       })}

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import Menu from "./Menu";
+import Menu from "../Menu/Menu";
 import Admin from "./Admin/Admin";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
@@ -22,7 +22,6 @@ export default function Main() {
 }
 
 const MainStyled  = styled.main`
-    border: 3px solid green; 
     background: ${theme.colors.background_white};
     height: calc(95vh - 10vh);
     flex: 1;

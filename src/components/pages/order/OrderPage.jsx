@@ -1,17 +1,45 @@
-import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import Navbar from "./Navbar/Navbar"
 import Main from "./Main/Main"
 import { theme } from "../../../theme"
 import OrderContext from "../../../context/OrderContext.jsx"
 import { useState } from "react"
+import { fakeMenu } from "../../../fakeData/fakeMenu.jsx"
+import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm.jsx"
 
 export default function OrderPage () {
-    // state
+   
+    //State
     const [isModeAdmin, setIsModeAdmin] = useState(true)
-    const [isCollapsed, setIsCollapsed]= useState(false)
+    const [isCollapsed, setIsCollapsed]= useState(true)
     const [currentTabSelected, setCurrentTabSelected] = useState("add")
-    // comportements
+    const [menu, setMenu] = useState(fakeMenu.EMPTY)
+    const [ newProduct, setNewProduct ] = useState(EMPTY_PRODUCT)
+
+    //Comportements
+
+    const handleAddProduct = (newProduct) => {
+      //Copie du tableau
+      const menuCopy = [...menu]
+      //Manip copie du tableau
+      const menuUpdated = [newProduct, ...menuCopy]
+      //Update State
+      setMenu(menuUpdated)
+    }
+
+    const handleDelete = (idOfProductToDelete) => {
+      //Copie du state
+      const menuCopy = [...menu]
+      //Manip copie de state
+      const menuUpdated = menuCopy.filter((product) =>  product.id !== idOfProductToDelete)
+      //Update State
+      setMenu(menuUpdated)
+    }
+
+    const resetMenu = () => {
+      setMenu(fakeMenu.SMALL)
+  }
+
 
     const orderContextValue = {
       isModeAdmin,
@@ -20,8 +48,15 @@ export default function OrderPage () {
       setIsCollapsed,
       currentTabSelected,
       setCurrentTabSelected,
+      menu,
+      handleDelete,
+      handleAddProduct,
+      resetMenu,
+      newProduct,
+      setNewProduct,
         }
-    // affichage
+
+    //Affichage
     return (
         <OrderContext.Provider value={orderContextValue}>
           <OrderPageStyled>
