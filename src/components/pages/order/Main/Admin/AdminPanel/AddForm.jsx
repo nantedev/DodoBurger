@@ -1,9 +1,6 @@
 import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import OrderContext from '../../../../../../context/OrderContext';
-import { FaHamburger } from 'react-icons/fa';
-import { BsFillCameraFill } from 'react-icons/bs';
-import { MdOutlineEuro } from 'react-icons/md';
 import TextInput from '../../../../../reusable-ui/TextInput';
 import Button from '../../../../../reusable-ui/Button';
 import ImagePreview from './ImagePreview';
@@ -96,6 +93,7 @@ const AddFormStyled = styled.form`
 
     .submit-button {
       width: 50%;
+      height: 100%;
     }
   }
 `; 

@@ -14,7 +14,7 @@ export default function SubmitMessage() {
 const SubmitMessageStyled = styled.div`
     display: flex;
     align-items: center;
-    margin: 0 auto;
+    margin-left: 5px;
 
       .icon {
         color: ${theme.colors.success};
