@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 import { theme } from "../../theme"
 
-export default function Button({label, Icon, className, version="normal", onClick}) {
+export default function Button({label, Icon, className, version="primary", onClick}) {
   return (
     <ButtonStyled className={className} version={version} onClick={onClick}>
     <span>{label}</span>

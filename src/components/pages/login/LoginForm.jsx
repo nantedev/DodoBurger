@@ -45,7 +45,6 @@ export default function LoginForm() {
             <Button 
               label={"Accédez à mon espace"} 
               Icon={<IoChevronForwardSharp />}
-              version="primary"
               />
         </div>
     </LoginFormStyled>

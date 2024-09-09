@@ -7,7 +7,7 @@ export default function EmptyMenuAdmin({ onReset }) {
     <EmptyMenuStyled>
       <span className="title">Le menu est vide ?</span>
       <span className="description">Cliquez ci-dessous pour le réinitialiser</span>
-      <Button label={"Générer de nouveaux produits"} onClick={onReset} version="primary"/>
+      <Button label={"Générer de nouveaux produits"} onClick={onReset} />
     </EmptyMenuStyled>
   )
 }
