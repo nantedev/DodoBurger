@@ -5,6 +5,7 @@ import { theme } from "../../../theme"
 import OrderContext from "../../../context/OrderContext.jsx"
 import { useState } from "react"
 import { fakeMenu } from "../../../fakeData/fakeMenu.jsx"
+import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm.jsx"
 
 export default function OrderPage () {
    
@@ -13,7 +14,8 @@ export default function OrderPage () {
     const [isCollapsed, setIsCollapsed]= useState(true)
     const [currentTabSelected, setCurrentTabSelected] = useState("add")
     const [menu, setMenu] = useState(fakeMenu.EMPTY)
-    
+    const [ newProduct, setNewProduct ] = useState(EMPTY_PRODUCT)
+
     //Comportements
 
     const handleAddProduct = (newProduct) => {
@@ -49,7 +51,9 @@ export default function OrderPage () {
       menu,
       handleDelete,
       handleAddProduct,
-      resetMenu
+      resetMenu,
+      newProduct,
+      setNewProduct,
         }
 
     //Affichage
