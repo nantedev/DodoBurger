@@ -1,16 +1,16 @@
 import styled, { css } from "styled-components"
 import { theme } from "../../theme"
 
-export default function PrimaryButton({label, Icon, version="normal"}) {
+export default function Button({label, Icon, version="normal"}) {
   return (
-    <PrimaryButtonStyled version={version}>
+    <ButtonStyled version={version}>
     <span>{label}</span>
     <div className="icon">{Icon && Icon}</div>
-    </PrimaryButtonStyled>
+    </ButtonStyled>
   )
 }
 
-const PrimaryButtonStyled = styled.button`
+const ButtonStyled = styled.button`
   ${({version}) => extraStyle[version]};
 `
 

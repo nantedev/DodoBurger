@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { theme } from "../../theme"
-import PrimaryButton from "./PrimaryButton"
+import Button from "./Button"
 import { TiDelete } from "react-icons/ti";
 
 export default function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete }) {
@@ -21,7 +21,7 @@ export default function Card({title, imageSource, leftDescription, hasDeleteButt
         <div className="description">
           <div className="left-description">{leftDescription}</div>
           <div className="right-description">
-            <PrimaryButton className="primary-button" label={"Ajouter"} />
+            <Button className="primary-button" label={"Ajouter"} version="primary"/>
           </div>
         </div>
       </div>
