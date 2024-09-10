@@ -5,7 +5,7 @@ import { theme } from "../../../theme"
 import OrderContext from "../../../context/OrderContext.jsx"
 import { useState } from "react"
 import { fakeMenu } from "../../../fakeData/fakeMenu.jsx"
-import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm.jsx"
+import { EMPTY_PRODUCT } from "../../../enums/product"
 
 export default function OrderPage () {
    
@@ -15,7 +15,8 @@ export default function OrderPage () {
     const [currentTabSelected, setCurrentTabSelected] = useState("add")
     const [menu, setMenu] = useState(fakeMenu.EMPTY)
     const [ newProduct, setNewProduct ] = useState(EMPTY_PRODUCT)
-
+    const [ productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+  
     //Comportements
 
     const handleAddProduct = (newProduct) => {
@@ -54,6 +55,8 @@ export default function OrderPage () {
       resetMenu,
       newProduct,
       setNewProduct,
+      productSelected,
+      setProductSelected,
         }
 
     //Affichage

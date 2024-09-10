@@ -1,8 +1,17 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
+import OrderContext from '../../../../../../context/OrderContext';
+import HintMessage from '../HintMessage';
 
 export default function EditForm() {
+  const { productSelected } = useContext(OrderContext)
+
   return (
-    <EditFormStyled>Content</EditFormStyled>
+    <EditFormStyled>
+        <span>{productSelected && productSelected.title}</span>
+        <HintMessage />
+        
+    </EditFormStyled>
   );
 }
 

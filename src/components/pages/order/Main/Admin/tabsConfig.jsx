@@ -15,8 +15,7 @@ export const tabsConfig = [
       index: "edit",
       label:"Modifier un produit",
       Icon:<MdModeEditOutline /> ,
-      // Content: <EditForm />,
-      Content: <HintMessage />
+      Content: <EditForm />,
     },
 ]
 

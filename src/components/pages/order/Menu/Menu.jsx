@@ -11,7 +11,7 @@ const IMAGE_BY_DEFAUT = "/images/coming-soon.png"
 
 export default function Menu() {
   
-const { menu, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext)
+const { menu, isModeAdmin, handleDelete, resetMenu, setProductSelected } = useContext(OrderContext)
 
 
   if(menu.length === 0) {
@@ -19,7 +19,11 @@ const { menu, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext)
     return <EmptyMenuAdmin onReset={resetMenu}/>
   }
 
-  
+  const handleClick = (idProductSelected) => {
+    const productSelected = menu.find((product) => product.id === idProductSelected )
+    console.log(productSelected)
+    setProductSelected(productSelected)
+  }
 
     return (
     <StyledMenu>
@@ -32,6 +36,7 @@ const { menu, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext)
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={() => handleDelete(id)}
+            onClick={() => handleClick(id)}
           />
         )
       })}
