@@ -11,7 +11,7 @@ export default function Card({
   onDelete, 
   onClick, 
   isHoverable,
-  isSelected 
+  isSelected, 
   }) {
   return (
     <CardStyled onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
@@ -22,18 +22,18 @@ export default function Card({
             aria-label="delete-button"
             onClick={onDelete}>
             <TiDelete className="icon" />
-          </button>)}
+            </button>)}
                 <div className="image">
-          <img src={imageSource} alt={title} />
+                  <img src={imageSource} alt={title} />
                 </div>
                 <div className="text-info">
-          <div className="title">{title}</div>
-          <div className="description">
-            <div className="left-description">{leftDescription}</div>
-            <div className="right-description">
-              <Button className="primary-button" label={"Ajouter"} />
-            </div>
-          </div>
+                <div className="title">{title}</div>
+                <div className="description">
+                    <div className="left-description">{leftDescription}</div>
+                    <div className="right-description">
+                    <Button className="primary-button" label={"Ajouter"} onClick={(event) => event.stopPropagation()}/>
+                    </div>
+                </div>
                 </div>
         </div>
     </CardStyled>

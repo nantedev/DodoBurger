@@ -29,6 +29,11 @@ const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductS
     return <EmptyMenuAdmin onReset={resetMenu}/>
   }
 
+  const handleCardDelete = (event, idProductToDelete) => {
+    event.stopPropagation()
+    handleDelete(idProductToDelete)
+   }
+
   return (
     <StyledMenu>
       {menu.map(({ id, title, imageSource, price }) => {
@@ -39,8 +44,8 @@ const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductS
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAUT}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
-            onDelete={() => handleDelete(id)}
             onClick={() => handleClick(id)}
+            onDelete={(event) => handleCardDelete(event, id)} 
             isHoverable={isModeAdmin}
             isSelected={checkIfProductIsClicked(id, productSelected)}
           />
