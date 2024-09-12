@@ -17,7 +17,7 @@ export default function OrderPage () {
     const [ newProduct, setNewProduct ] = useState(EMPTY_PRODUCT)
     const [ productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   
-    //Comportements
+    //Comportements (state handlers)
 
     const handleAddProduct = (newProduct) => {
       //Copie du tableau

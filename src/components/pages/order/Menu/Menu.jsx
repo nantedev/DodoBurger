@@ -13,19 +13,21 @@ export default function Menu() {
   
 const { menu, isModeAdmin, handleDelete, resetMenu, setProductSelected } = useContext(OrderContext)
 
+  //State
 
+  //Comportements (event handlers)
+  const handleClick = (idProductSelected) => {
+    const productClickedOn = menu.find((product) => product.id === idProductSelected )
+    setProductSelected(productClickedOn)
+  }
+
+  //Affichage
   if(menu.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient />
     return <EmptyMenuAdmin onReset={resetMenu}/>
   }
 
-  const handleClick = (idProductSelected) => {
-    const productSelected = menu.find((product) => product.id === idProductSelected )
-    console.log(productSelected)
-    setProductSelected(productSelected)
-  }
-
-    return (
+  return (
     <StyledMenu>
       {menu.map(({ id, title, imageSource, price }) => {
         return (
