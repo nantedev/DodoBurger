@@ -1,35 +1,43 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../../theme"
 import Button from "./Button"
 import { TiDelete } from "react-icons/ti";
 
-export default function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick }) {
+export default function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable }) {
   return (
-    <CardStyled onClick={onClick}>
-        {hasDeleteButton && (
-          <button 
-          className="delete-button" 
-          aria-label="delete-button"
-          onClick={onDelete}>
-          <TiDelete className="icon" />
-        </button>)}
-      <div className="image">
-        <img src={imageSource} alt={title} />
-      </div>
-      <div className="text-info">
-        <div className="title">{title}</div>
-        <div className="description">
-          <div className="left-description">{leftDescription}</div>
-          <div className="right-description">
-            <Button className="primary-button" label={"Ajouter"} />
+    <CardStyled onClick={onClick} isHoverable={isHoverable}>
+        <div className="card">
+          {hasDeleteButton && (
+            <button
+            className="delete-button"
+            aria-label="delete-button"
+            onClick={onDelete}>
+            <TiDelete className="icon" />
+          </button>)}
+                <div className="image">
+          <img src={imageSource} alt={title} />
+                </div>
+                <div className="text-info">
+          <div className="title">{title}</div>
+          <div className="description">
+            <div className="left-description">{leftDescription}</div>
+            <div className="right-description">
+              <Button className="primary-button" label={"Ajouter"} />
+            </div>
           </div>
+                </div>
         </div>
-      </div>
     </CardStyled>
   )
 }
 
 const CardStyled = styled.div`
+  ${(props) => props.isHoverable && hoverableStyle}
+  border-radius: ${theme.borderRadius.extraRound};
+  border: 1px solid red;
+  height: 330px; //fix extra card height
+
+      .card {
         background: ${theme.colors.white};
         width: 240px;
         height: 330px;
@@ -82,7 +90,7 @@ const CardStyled = styled.div`
         height: 100%;
         object-fit: contain;
         }
-    }
+      }
         .text-info {
         display: grid;
         grid-template-rows: 30% 70%;
@@ -131,6 +139,16 @@ const CardStyled = styled.div`
             padding: 12px;
             }
         }
-        }
+      }
     }
+  }   
 `;
+
+const hoverableStyle = css`
+  .card:hover {
+    transform: scale(1.05);
+    transition: ease-out 0.4s;
+    box-shadow: ${theme.shadows.orangeHighlight};
+    cursor: pointer;
+  }
+`
