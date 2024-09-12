@@ -6,6 +6,7 @@ import OrderContext from "../../../context/OrderContext.jsx"
 import { useState } from "react"
 import { fakeMenu } from "../../../fakeData/fakeMenu.jsx"
 import { EMPTY_PRODUCT } from "../../../enums/product"
+import { deepClone } from "../../../utils/array"
 
 export default function OrderPage () {
    
