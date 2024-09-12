@@ -18,6 +18,7 @@ const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductS
 
   //Comportements (event handlers)
   const handleClick = (idProductSelected) => {
+    if (!isModeAdmin) return
     const productClickedOn = menu.find((product) => product.id === idProductSelected )
     setProductSelected(productClickedOn)
   }
