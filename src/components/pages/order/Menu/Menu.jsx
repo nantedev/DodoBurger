@@ -40,6 +40,7 @@ const { menu, isModeAdmin, handleDelete, resetMenu, setProductSelected } = useCo
             onDelete={() => handleDelete(id)}
             onClick={() => handleClick(id)}
             isHoverable={isModeAdmin}
+            isSelected={true}
           />
         )
       })}
