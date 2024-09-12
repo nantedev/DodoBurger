@@ -6,12 +6,13 @@ import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { checkIfProductIsClicked } from "./helper";
 
 const IMAGE_BY_DEFAUT = "/images/coming-soon.png"
 
 export default function Menu() {
   
-const { menu, isModeAdmin, handleDelete, resetMenu, setProductSelected } = useContext(OrderContext)
+const { menu, isModeAdmin, handleDelete, resetMenu, productSelected, setProductSelected } = useContext(OrderContext)
 
   //State
 
@@ -20,6 +21,7 @@ const { menu, isModeAdmin, handleDelete, resetMenu, setProductSelected } = useCo
     const productClickedOn = menu.find((product) => product.id === idProductSelected )
     setProductSelected(productClickedOn)
   }
+
 
   //Affichage
   if(menu.length === 0) {
@@ -40,7 +42,7 @@ const { menu, isModeAdmin, handleDelete, resetMenu, setProductSelected } = useCo
             onDelete={() => handleDelete(id)}
             onClick={() => handleClick(id)}
             isHoverable={isModeAdmin}
-            isSelected={true}
+            isSelected={checkIfProductIsClicked(id, productSelected)}
           />
         )
       })}
