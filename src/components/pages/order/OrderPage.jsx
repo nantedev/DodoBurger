@@ -3,7 +3,7 @@ import Navbar from "./Navbar/Navbar"
 import Main from "./Main/Main"
 import { theme } from "../../../theme"
 import OrderContext from "../../../context/OrderContext.jsx"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { fakeMenu } from "../../../fakeData/fakeMenu.jsx"
 import { EMPTY_PRODUCT } from "../../../enums/product"
 import { deepClone } from "../../../utils/array"
@@ -17,7 +17,8 @@ export default function OrderPage () {
     const [menu, setMenu] = useState(fakeMenu.MEDIUM)
     const [ newProduct, setNewProduct ] = useState(EMPTY_PRODUCT)
     const [ productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
-  
+    const titleEditRef = useRef()
+
     //Comportements (state handlers)
 
     const handleAddProduct = (newProduct) => {
@@ -69,7 +70,8 @@ export default function OrderPage () {
       setNewProduct,
       productSelected,
       setProductSelected,
-      handleEdit
+      handleEdit,
+      titleEditRef,
         }
 
     //Affichage
