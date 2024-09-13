@@ -4,6 +4,7 @@ import OrderContext from '../../../../../../context/OrderContext';
 import ImagePreview from './ImagePreview';
 import { getInputTextsConfig } from './inputTextsConfig';
 import TextInput from '../../../../../reusable-ui/TextInput';
+import { theme } from '../../../../../../theme';
 
 export default function EditForm() {
   //State
@@ -37,7 +38,12 @@ export default function EditForm() {
               />
              ))} 
       </div>
-      <div className="submit"></div>
+      <div className="submit">
+          <div className='sentence'>
+            Cliquer sur un produit du menu pour le modifier{" "}
+          <span className="live-update">en temps réel</span>
+          </div>
+      </div>
     </EditFormStyled>
   );
 }
@@ -72,5 +78,15 @@ const EditFormStyled = styled.div`
       width: 50%;
       height: 100%;
     }
+
+   .sentence { 
+      color: ${theme.colors.primary};
+      font-size: ${theme.fonts.size.SM};
+      
+      .live-update {
+        text-decoration: underline;
+      }
+    }
   }
+
 `;
