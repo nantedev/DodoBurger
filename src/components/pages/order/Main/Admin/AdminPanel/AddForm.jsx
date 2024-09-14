@@ -1,12 +1,7 @@
 import { useContext, useState } from 'react';
-import styled from 'styled-components';
 import OrderContext from '../../../../../../context/OrderContext';
-import TextInput from '../../../../../reusable-ui/TextInput';
-import Button from '../../../../../reusable-ui/Button';
-import ImagePreview from './ImagePreview';
-import SubmitMessage from './SubmitMessage';
-import { getInputTextsConfig } from './inputTextsConfig';
 import { EMPTY_PRODUCT } from '../../../../../../enums/product';
+import Form from './Form'
 
 
 export default function AddForm() {
@@ -35,60 +30,14 @@ export default function AddForm() {
     setIsSubmitted(false)}, 2000)
    }
 
-   const inputTexts = getInputTextsConfig(newProduct)
   
    //Affichage
   return (
-    <AddFormStyled onSubmit={handleSubmit}>
-       <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title}/>
-      <div className="input-fields">
-             {inputTexts.map((input) => (
-              <TextInput 
-              key={input.id}
-                {...input}
-                 onChange={handleChange}
-                 Icon={input.Icon}
-                 version="minimalist"
-              />
-             ))} 
-      </div>
-      <div className="submit">
-        <Button className="submit-button" label="Ajouter un nouveau produit au menu" version="success"/>
-        {isSubmitted &&  (<SubmitMessage />)}
-      </div>
-    </AddFormStyled>
+  <Form 
+    product={newProduct} 
+    onSubmit={handleSubmit} 
+    onChange={handleChange}
+    isSubmitted={isSubmitted}
+    />
   )
 }
-
-const AddFormStyled = styled.form`
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-areas: 
-    "image-preview input-fields"
-    "image-preview input-fields"
-    "image-preview input-fields"
-    ".             submit";
-  height: 100%;
-  width: 70%;
-  grid-column-gap: 20px;
-  grid-row-gap: 8px;
-
-
-  .input-fields{
-    grid-area: input-fields ;
-    display: grid;
-    grid-row-gap: 8px;
-  }
-
-  .submit{
-    grid-area: submit;
-    display: flex;
-    align-items: center;
-
-    .submit-button {
-      width: 50%;
-      height: 100%;
-    }
-  }
-`; 
