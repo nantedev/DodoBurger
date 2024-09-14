@@ -5,13 +5,12 @@ import { getInputTextsConfig } from './inputTextsConfig';
 import React from 'react';
 
 
-const Form = React.forwardRef(({product, onSubmit, onChange, isSubmitted, QUELQUECHOSE}, ref) => {
-  //State
+const Form = React.forwardRef(({product, onSubmit, onChange, children}, ref) => {
+  //State(empty)
 
-  //Comportement
+  //Comportement(empty)
 
    const inputTexts = getInputTextsConfig(product)
-
    //Affichage
   return (
     <FormStyled onSubmit={onSubmit}>
@@ -29,7 +28,7 @@ const Form = React.forwardRef(({product, onSubmit, onChange, isSubmitted, QUELQU
              ))} 
       </div>
       <div className="submit">
-       {QUELQUECHOSE}
+       {children}
       </div>
     </FormStyled>
   )
