@@ -1,17 +1,11 @@
-import { useContext, useRef} from 'react';
-import styled from 'styled-components';
+import { useContext } from 'react';
 import OrderContext from '../../../../../../context/OrderContext';
-import ImagePreview from './ImagePreview';
-import { getInputTextsConfig } from './inputTextsConfig';
-import TextInput from '../../../../../reusable-ui/TextInput';
-import { theme } from '../../../../../../theme';
-import EditInfoMessage from './EditInfoMessage';
+import Form from './form';
+import EditInfoMessage from './EditInfoMessage'
 
 export default function EditForm() {
   //State
-  const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext)
-  const inputTexts = getInputTextsConfig(productSelected)
- 
+  const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext) 
 
   //Comportements (event handlers)
   const handleChange = (event) => {
@@ -25,57 +19,30 @@ export default function EditForm() {
   }
   //Affichage
   return (
-    <EditFormStyled>
-        <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title}/>
-        <div className="input-fields">
-             {inputTexts.map((input) => (
-              <TextInput 
-              key={input.id}
-                 {...input}
-                 onChange={handleChange}
-                 Icon={input.Icon}
-                 version="minimalist"
-                 ref={input.name === "title" ? titleEditRef : null}
-              />
-             ))} 
-      </div>
-      <div className="submit">
-              <EditInfoMessage />
-      </div>
-    </EditFormStyled>
-  );
+  //   <EditFormStyled>
+  //       <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title}/>
+  //       <div className="input-fields">
+  //            {inputTexts.map((input) => (
+  //             <TextInput 
+  //             key={input.id}
+  //                {...input}
+  //                onChange={handleChange}
+  //                Icon={input.Icon}
+  //                version="minimalist"
+  //                ref={input.name === "title" ? titleEditRef : null}
+  //             />
+  //            ))} 
+  //     </div>
+  //     <div className="submit">
+  //             <EditInfoMessage />
+  //     </div>
+  //   </EditFormStyled>
+  // );
+  <Form 
+  product={productSelected} 
+  onChange={handleChange} 
+  ref={titleEditRef}
+  QUELQUECHOSE={<EditInfoMessage />}
+  />
+  )
 }
-
-const EditFormStyled = styled.div`
-   display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-areas: 
-    "image-preview input-fields"
-    "image-preview input-fields"
-    "image-preview input-fields"
-    ".             submit";
-  height: 100%;
-  width: 70%;
-  grid-column-gap: 20px;
-  grid-row-gap: 8px;
-
-
-  .input-fields{
-    grid-area: input-fields ;
-    display: grid;
-    grid-row-gap: 8px;
-  }
-
-  .submit{
-    grid-area: submit;
-    display: flex;
-    align-items: center;
-
-    .submit-button {
-      width: 50%;
-      height: 100%;
-    }
-  }
-
-`;

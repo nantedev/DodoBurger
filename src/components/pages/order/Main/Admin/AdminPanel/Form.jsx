@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 import TextInput from '../../../../../reusable-ui/TextInput';
-import Button from '../../../../../reusable-ui/Button';
 import ImagePreview from './ImagePreview';
-import SubmitMessage from './SubmitMessage';
 import { getInputTextsConfig } from './inputTextsConfig';
+import React from 'react';
 
 
-export default function Form({product, onSubmit, onChange, isSubmitted}) {
+const Form = React.forwardRef(({product, onSubmit, onChange, isSubmitted, QUELQUECHOSE}, ref) => {
   //State
 
   //Comportement
@@ -16,7 +15,7 @@ export default function Form({product, onSubmit, onChange, isSubmitted}) {
    //Affichage
   return (
     <FormStyled onSubmit={onSubmit}>
-       <ImagePreview imageSource={product.imageSource} title={product.title}/>
+       <ImagePreview imageSource={product.imageSource} title={product.title} />
       <div className="input-fields">
              {inputTexts.map((input) => (
               <TextInput 
@@ -25,17 +24,18 @@ export default function Form({product, onSubmit, onChange, isSubmitted}) {
                  onChange={onChange}
                  Icon={input.Icon}
                  version="minimalist"
+                 ref={ref && input.name === "title" ? ref : null}
               />
              ))} 
       </div>
       <div className="submit">
-        <Button className="submit-button" label="Ajouter un nouveau produit au menu" version="success"/>
-        {isSubmitted &&  (<SubmitMessage />)}
+       {QUELQUECHOSE}
       </div>
     </FormStyled>
   )
-}
+})
 
+export default Form
 const FormStyled = styled.form`
   display: grid;
   grid-template-columns: 1fr 3fr;
