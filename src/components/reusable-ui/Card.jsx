@@ -40,7 +40,9 @@ export default function Card({
   )
 }
 
-const CardStyled = styled.div`
+const CardStyled = styled.div.withConfig({ 
+  shouldForwardProp: (prop) => !['isSelected', 'isHoverable'].includes(prop),
+})`
   ${({isHoverable}) => isHoverable && hoverableStyle}
   border-radius: ${theme.borderRadius.extraRound};
   height: 330px; //fix extra card height
