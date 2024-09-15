@@ -44,7 +44,6 @@ export default function OrderPage () {
       const menuCopy = deepClone(menu)
       //Manip copie de state
       const indexOfProductToEdit = menu.findIndex((product) => product.id === productBeingEdited.id)
-      console.log("indexOfProductToEdit: ", indexOfProductToEdit)
       menuCopy[indexOfProductToEdit] = productBeingEdited
       //Update State
       setMenu(menuCopy)     
