@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from '../../theme';
 
 export default function Bar({children}) {
   return (
@@ -7,7 +8,7 @@ export default function Bar({children}) {
 }
 
 const BarStyled = styled.div`
-  border: 1px solid red;
   background: ${theme.colors.background_dark};
   height: 70px;
+  padding: 0 16px;
 `;
