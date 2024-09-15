@@ -6,22 +6,52 @@ import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { checkIfProductIsClicked } from "./helper";
+import { EMPTY_PRODUCT } from "../../../../enums/product";
 
 const IMAGE_BY_DEFAUT = "/images/coming-soon.png"
 
 export default function Menu() {
   
-const { menu, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext)
+const { 
+  menu, 
+  isModeAdmin, 
+  handleDelete, 
+  resetMenu, 
+  productSelected, 
+  setProductSelected, 
+  setIsCollapsed, 
+  setCurrentTabSelected, 
+  titleEditRef,
+  } = useContext(OrderContext)
+
+  //State
+
+  //Comportements (event handlers)
+  const handleClick = async (idProductSelected) => {
+    if (!isModeAdmin) return
+   await setCurrentTabSelected("edit")
+   await setIsCollapsed(false)
+    const productClickedOn = menu.find((product) => product.id === idProductSelected )
+   await setProductSelected(productClickedOn)
+   titleEditRef.current.focus()
+  }
 
 
+  //Affichage
   if(menu.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient />
     return <EmptyMenuAdmin onReset={resetMenu}/>
   }
 
-  
+  const handleCardDelete = (event, idProductToDelete) => {
+    event.stopPropagation()
+    handleDelete(idProductToDelete)
+    idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
+    titleEditRef.current.focus()
+   }
 
-    return (
+  return (
     <StyledMenu>
       {menu.map(({ id, title, imageSource, price }) => {
         return (
@@ -31,7 +61,10 @@ const { menu, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext)
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAUT}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
-            onDelete={() => handleDelete(id)}
+            onClick={() => handleClick(id)}
+            onDelete={(event) => handleCardDelete(event, id)} 
+            isHoverable={isModeAdmin}
+            isSelected={checkIfProductIsClicked(id, productSelected)}
           />
         )
       })}
@@ -41,7 +74,6 @@ const { menu, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext)
 
 
 const StyledMenu  = styled.div`
-    border: 3px solid blue;
     background: ${theme.colors.background_white};
     display: grid;
     grid-template-columns: repeat(4, 1fr);

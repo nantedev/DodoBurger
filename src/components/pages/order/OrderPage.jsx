@@ -3,24 +3,27 @@ import Navbar from "./Navbar/Navbar"
 import Main from "./Main/Main"
 import { theme } from "../../../theme"
 import OrderContext from "../../../context/OrderContext.jsx"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { fakeMenu } from "../../../fakeData/fakeMenu.jsx"
-import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm.jsx"
+import { EMPTY_PRODUCT } from "../../../enums/product"
+import { deepClone } from "../../../utils/array"
 
 export default function OrderPage () {
    
     //State
     const [isModeAdmin, setIsModeAdmin] = useState(true)
     const [isCollapsed, setIsCollapsed]= useState(true)
-    const [currentTabSelected, setCurrentTabSelected] = useState("add")
-    const [menu, setMenu] = useState(fakeMenu.EMPTY)
+    const [currentTabSelected, setCurrentTabSelected] = useState("edit")
+    const [menu, setMenu] = useState(fakeMenu.MEDIUM)
     const [ newProduct, setNewProduct ] = useState(EMPTY_PRODUCT)
+    const [ productSelected, setProductSelected] = useState(fakeMenu.SMALL[1])
+    const titleEditRef = useRef()
 
-    //Comportements
+    //Comportements (state handlers)
 
     const handleAddProduct = (newProduct) => {
       //Copie du tableau
-      const menuCopy = [...menu]
+      const menuCopy = deepClone(menu)
       //Manip copie du tableau
       const menuUpdated = [newProduct, ...menuCopy]
       //Update State
@@ -29,11 +32,22 @@ export default function OrderPage () {
 
     const handleDelete = (idOfProductToDelete) => {
       //Copie du state
-      const menuCopy = [...menu]
+      const menuCopy = deepClone(menu)
       //Manip copie de state
       const menuUpdated = menuCopy.filter((product) =>  product.id !== idOfProductToDelete)
       //Update State
       setMenu(menuUpdated)
+    }
+
+    const handleEdit = (productBeingEdited) => { 
+      //Copie du state
+      const menuCopy = deepClone(menu)
+      //Manip copie de state
+      const indexOfProductToEdit = menu.findIndex((product) => product.id === productBeingEdited.id)
+      console.log("indexOfProductToEdit: ", indexOfProductToEdit)
+      menuCopy[indexOfProductToEdit] = productBeingEdited
+      //Update State
+      setMenu(menuCopy)     
     }
 
     const resetMenu = () => {
@@ -54,6 +68,10 @@ export default function OrderPage () {
       resetMenu,
       newProduct,
       setNewProduct,
+      productSelected,
+      setProductSelected,
+      handleEdit,
+      titleEditRef,
         }
 
     //Affichage
