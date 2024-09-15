@@ -22,4 +22,5 @@ const MainStyled  = styled.main`
 
     display: grid;
     grid-template-columns: 25% 1fr;
+    overflow: hidden;
 `
