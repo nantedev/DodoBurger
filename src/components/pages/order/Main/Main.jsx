@@ -1,11 +1,12 @@
 import styled from "styled-components"
 import { theme } from "../../../../theme"
 import MainRightSide from "./MainRightSide/MainRightSide"
+import Basket from "./Basket"
 
 export default function Main() {
   return (
     <MainStyled>
-      {/* <Basket /> */}
+      <Basket />
       <MainRightSide />
     </MainStyled>
   )
@@ -20,6 +21,5 @@ const MainStyled  = styled.main`
     box-shadow: ${theme.shadows.strong};
 
     display: grid;
-    grid-template-columns: 1fr;
-
+    grid-template-columns: 25% 1fr;
 `
