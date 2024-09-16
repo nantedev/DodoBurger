@@ -3,13 +3,14 @@ import {theme} from '../../../../../theme'
 import Bar from '../../../../reusable-ui/Bar';
 import Total from './Total';
 import {formatPrice} from '../../../../../utils/maths'
+import Footer from './Footer';
 
 export default function Basket() {
   return (
     <BasketStyled>
         <Total amountToPay={formatPrice(0)} />
         <div className="body">Body</div>
-        <Bar>Footer</Bar>
+        <Footer />
     </BasketStyled>
   );
 }
