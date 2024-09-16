@@ -4,9 +4,8 @@ import Main from "./Main/Main"
 import { theme } from "../../../theme"
 import OrderContext from "../../../context/OrderContext.jsx"
 import { useRef, useState } from "react"
-import { fakeMenu } from "../../../fakeData/fakeMenu.jsx"
 import { EMPTY_PRODUCT } from "../../../enums/product"
-import { deepClone } from "../../../utils/array"
+import { useMenu } from "../../../hooks/useMenu.jsx"
 
 export default function OrderPage () {
    
@@ -14,45 +13,10 @@ export default function OrderPage () {
     const [isModeAdmin, setIsModeAdmin] = useState(true)
     const [isCollapsed, setIsCollapsed]= useState(true)
     const [currentTabSelected, setCurrentTabSelected] = useState("edit")
-    const [menu, setMenu] = useState(fakeMenu.MEDIUM)
     const [ newProduct, setNewProduct ] = useState(EMPTY_PRODUCT)
-    const [ productSelected, setProductSelected] = useState(fakeMenu.SMALL[1])
+    const [ productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
-
-    //Comportements (state handlers)
-
-    const handleAddProduct = (newProduct) => {
-      //Copie du tableau
-      const menuCopy = deepClone(menu)
-      //Manip copie du tableau
-      const menuUpdated = [newProduct, ...menuCopy]
-      //Update State
-      setMenu(menuUpdated)
-    }
-
-    const handleDelete = (idOfProductToDelete) => {
-      //Copie du state
-      const menuCopy = deepClone(menu)
-      //Manip copie de state
-      const menuUpdated = menuCopy.filter((product) =>  product.id !== idOfProductToDelete)
-      //Update State
-      setMenu(menuUpdated)
-    }
-
-    const handleEdit = (productBeingEdited) => { 
-      //Copie du state
-      const menuCopy = deepClone(menu)
-      //Manip copie de state
-      const indexOfProductToEdit = menu.findIndex((product) => product.id === productBeingEdited.id)
-      console.log("indexOfProductToEdit: ", indexOfProductToEdit)
-      menuCopy[indexOfProductToEdit] = productBeingEdited
-      //Update State
-      setMenu(menuCopy)     
-    }
-
-    const resetMenu = () => {
-      setMenu(fakeMenu.SMALL)
-  }
+    const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
 
 
     const orderContextValue = {
@@ -64,7 +28,7 @@ export default function OrderPage () {
       setCurrentTabSelected,
       menu,
       handleDelete,
-      handleAddProduct,
+      handleAdd,
       resetMenu,
       newProduct,
       setNewProduct,

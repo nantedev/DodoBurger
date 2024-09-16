@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import TextInput from '../../../../../reusable-ui/TextInput';
+import TextInput from '../../../../../../reusable-ui/TextInput';
 import ImagePreview from './ImagePreview';
 import { getInputTextsConfig } from './inputTextsConfig';
 import React from 'react';
