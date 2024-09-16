@@ -9,7 +9,7 @@ import { useSuccessMessage } from '../../../../../../../hooks/useSuccessMessage'
 export default function AddForm() {
 
   //state
-  const  { handleAddProduct, newProduct, setNewProduct } = useContext(OrderContext)
+  const  { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
   const { isSubmitted, displaySuccessMessage } = useSuccessMessage()
   //comportement
   const handleChange = (event) => {
@@ -20,7 +20,7 @@ export default function AddForm() {
   const handleSubmit = (event) => {
       event.preventDefault()
       const newProductToAdd = { ...newProduct, id: crypto.randomUUID()} 
-      handleAddProduct(newProductToAdd)
+      handleAdd(newProductToAdd)
       setNewProduct(EMPTY_PRODUCT)
       displaySuccessMessage()
   } 
