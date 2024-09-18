@@ -9,8 +9,8 @@ import BasketProducts from "./BasketProducts"
 import { theme } from '../../../../../theme'
 
 export default function Basket() {
-  const {basket} = useContext(OrderContext)
-  
+  const { basket } = useContext(OrderContext)
+
   const isBasketEmpty = basket.length === 0
 
   return (
