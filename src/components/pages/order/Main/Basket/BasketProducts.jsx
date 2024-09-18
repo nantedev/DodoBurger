@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import BasketCard from './BasketCard';
+import { DEFAULT_IMAGE } from "../../../../../enums/product"
 
 export default function BasketProducts({basket}) {
   return (
     <BasketProductsStyled>{basket.map((basketProduct) => (
         <div className='basket-card'>
-          <BasketCard {...basketProduct} />
+          <BasketCard {...basketProduct} imageSource={basketProduct.imageSource ? basketProduct.imageSource : DEFAULT_IMAGE}/>
         </div>
         ))}
     </BasketProductsStyled>
