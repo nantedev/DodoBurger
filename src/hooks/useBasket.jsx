@@ -3,7 +3,7 @@ import {fakeBasket} from '../fakeData/fakeBasket'
 import { deepClone, findInArray, findIndex } from '../utils/array'
 
 export const useBasket = () => { 
-    const [basket, setBasket] = useState(fakeBasket.SMALL)
+    const [basket, setBasket] = useState(fakeBasket.EMPTY)
     const handleAddToBasket = (productToAdd) => {
         
         const basketCopy = deepClone(basket)
@@ -13,13 +13,12 @@ export const useBasket = () => {
 
         if(!isProductAlreadyInBasket) {
             createNewProductInBasket(productToAdd, basketCopy, setBasket)
+            return
         }
 
         // Product is already in the basket
 
         incrementProductAlreadyInBasket(productToAdd, basketCopy)
-
-
 
     }
 
