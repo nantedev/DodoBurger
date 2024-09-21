@@ -35,6 +35,7 @@ const Form = React.forwardRef(({product, onSubmit, onChange, children}, ref) => 
 })
 
 export default Form
+
 const FormStyled = styled.form`
   display: grid;
   grid-template-columns: 1fr 3fr;

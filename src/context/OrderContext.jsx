@@ -17,4 +17,7 @@ export default createContext({
     setProductSelected: () => {},
     handleEdit: () => {},
     titleEditRef: {},
+    basket: [],
+    handleAddToBasket: () => {},
+    handleDeleteBasketProduct: () => {},
 })

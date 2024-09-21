@@ -1,6 +1,6 @@
-import { useContext } from 'react';
-import OrderContext from '../../../../../../../context/OrderContext';
-import Form from './form';
+import { useContext } from 'react'
+import OrderContext from '../../../../../../../context/OrderContext'
+import Form from "./Form"
 import EditInfoMessage from './EditInfoMessage'
 
 export default function EditForm() {
@@ -19,25 +19,6 @@ export default function EditForm() {
   }
   //Affichage
   return (
-  //   <EditFormStyled>
-  //       <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title}/>
-  //       <div className="input-fields">
-  //            {inputTexts.map((input) => (
-  //             <TextInput 
-  //             key={input.id}
-  //                {...input}
-  //                onChange={handleChange}
-  //                Icon={input.Icon}
-  //                version="minimalist"
-  //                ref={input.name === "title" ? titleEditRef : null}
-  //             />
-  //            ))} 
-  //     </div>
-  //     <div className="submit">
-  //             <EditInfoMessage />
-  //     </div>
-  //   </EditFormStyled>
-  // );
   <Form 
   product={productSelected} 
   onChange={handleChange} 
