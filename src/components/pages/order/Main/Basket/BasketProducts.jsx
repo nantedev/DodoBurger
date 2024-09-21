@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import BasketCard from './BasketCard';
 import { DEFAULT_IMAGE } from "../../../../../enums/product"
 
-export default function BasketProducts({basket, isModeAdmin}) {
-  const handleOnDelete = (id) => { }
+export default function BasketProducts({basket, isModeAdmin, handleDeleteBasketProduct}) {
+  const handleOnDelete = (id) => { 
+    handleDeleteBasketProduct(id)
+  }
 
   return (
     <BasketProductsStyled>{basket.map((basketProduct) => (
