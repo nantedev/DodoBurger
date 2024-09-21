@@ -8,7 +8,7 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
-import { findInArray } from "../../../../../../utils/array"
+import { findObjectById, isEmpty } from "../../../../../../utils/array"
 const IMAGE_BY_DEFAUT = "/images/coming-soon.png"
 
 export default function Menu() {
@@ -34,20 +34,20 @@ const {
     if (!isModeAdmin) return
    await setCurrentTabSelected("edit")
    await setIsCollapsed(false)
-   const productClickedOn = findInArray(idProductClicked, menu)   
+   const productClickedOn = findObjectById(idProductClicked, menu)   
    await setProductSelected(productClickedOn)
    titleEditRef.current.focus()
   }
 
   const handleAddButton = (event, idProductToAdd) => {
     event.stopPropagation()
-    const productToAdd = findInArray(idProductToAdd, menu)
+    const productToAdd = findObjectById(idProductToAdd, menu)
     console.log("productToAdd", productToAdd);
     handleAddToBasket(productToAdd)
 }
 
   //Affichage
-  if(menu.length === 0) {
+  if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />
     return <EmptyMenuAdmin onReset={resetMenu}/>
   }
