@@ -56,7 +56,6 @@ const {
     handleDelete(idProductToDelete)
     handleDeleteBasketProduct(idProductToDelete)
     idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-    titleEditRef.current.focus()
    }
 
   return (
