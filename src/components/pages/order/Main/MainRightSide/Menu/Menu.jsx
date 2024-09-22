@@ -42,7 +42,6 @@ const {
   const handleAddButton = (event, idProductToAdd) => {
     event.stopPropagation()
     const productToAdd = findObjectById(idProductToAdd, menu)
-    console.log("productToAdd", productToAdd);
     handleAddToBasket(productToAdd)
 }
 
