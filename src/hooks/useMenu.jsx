@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { deepClone, removeObjectById } from "../utils/array"
+import { deepClone, removeObjectById, findIndexById } from "../utils/array"
 import { fakeMenu } from "../fakeData/fakeMenu"
 
 export const useMenu = () => { 
@@ -27,7 +27,7 @@ export const useMenu = () => {
         //Copie du state
         const menuCopy = deepClone(menu)
         //Manip copie de state
-        const indexOfProductToEdit = menu.findIndexById((product) => product.id === productBeingEdited.id)
+        const indexOfProductToEdit = findIndexById(productBeingEdited.id, menu)
         menuCopy[indexOfProductToEdit] = productBeingEdited
         //Update State
         setMenu(menuCopy)     

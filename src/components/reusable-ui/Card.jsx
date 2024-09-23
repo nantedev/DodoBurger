@@ -80,11 +80,11 @@ const CardStyled = styled.div.withConfig({
           width: 100%;
         }
 
-        :hover {
+        &:hover {
           color: ${theme.colors.red};
           /* background-color: red; */
         }
-        :active {
+        &:active {
           color: ${theme.colors.primary};
         }
       }
@@ -174,13 +174,13 @@ const selectedStyle = css`
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.white};
     transition: all 200ms ease-out;
-    :hover {
+    &:hover {
       color: ${theme.colors.white};
       background-color: ${theme.colors.primary};
       border: 1px solid ${theme.colors.white};
       transition: all 200ms ease-out;
     }
-    :active {
+    &:active {
       background-color: ${theme.colors.white};
       color: ${theme.colors.primary};
     }
