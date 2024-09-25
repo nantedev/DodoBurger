@@ -6,11 +6,13 @@ import { findObjectById } from "../../../../../utils/array"
 import OrderContext from '../../../../../context/OrderContext'
 
 export default function BasketProducts() {
-  const { basket, isModeAdmin, handleDeleteBasketProduct, menu } = useContext(OrderContext)
+  const { basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected } = useContext(OrderContext)
 
   const handleOnDelete = (id) => { 
     handleDeleteBasketProduct(id)
   }
+
+
 
   return (
     <BasketProductsStyled>
@@ -24,6 +26,7 @@ export default function BasketProducts() {
           quantity={basketProduct.quantity}
           onDelete={() => handleOnDelete(basketProduct.id)}
           isClickable={isModeAdmin}
+          onClick={isModeAdmin ?() => handleProductSelected(basketProduct.id) : null}
           />
         </div>
         )

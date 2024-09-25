@@ -10,10 +10,11 @@ export default function BasketCard({ title,
   imageSource, 
   className, 
   isClickable, 
-  onDelete
+  onDelete,
+  onClick,
 }) {
     return (
-        <BasketCardStyled className={className} isClickable={isClickable}>
+        <BasketCardStyled className={className} isClickable={isClickable} onClick={onClick}>
             <div className="delete-button" onClick={onDelete}>
                 <MdDeleteForever className="icon" />
             </div>

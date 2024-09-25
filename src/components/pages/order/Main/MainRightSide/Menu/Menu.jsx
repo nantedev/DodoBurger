@@ -20,24 +20,14 @@ const {
   resetMenu, 
   productSelected, 
   setProductSelected, 
-  setIsCollapsed, 
-  setCurrentTabSelected, 
-  titleEditRef,
   handleAddToBasket,
-  handleDeleteBasketProduct
+  handleDeleteBasketProduct,
+  handleProductSelected,
   } = useContext(OrderContext)
 
   //State
 
   //Comportements (event handlers)
-  const handleClick = async (idProductClicked) => {
-    if (!isModeAdmin) return
-   await setCurrentTabSelected("edit")
-   await setIsCollapsed(false)
-   const productClickedOn = findObjectById(idProductClicked, menu)   
-   await setProductSelected(productClickedOn)
-   titleEditRef.current.focus()
-  }
 
   const handleAddButton = (event, idProductToAdd) => {
     event.stopPropagation()
@@ -45,18 +35,20 @@ const {
     handleAddToBasket(productToAdd)
 }
 
+const handleCardDelete = (event, idProductToDelete) => {
+  event.stopPropagation()
+  handleDelete(idProductToDelete)
+  handleDeleteBasketProduct(idProductToDelete)
+  idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
+ }
+
   //Affichage
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />
     return <EmptyMenuAdmin onReset={resetMenu}/>
   }
 
-  const handleCardDelete = (event, idProductToDelete) => {
-    event.stopPropagation()
-    handleDelete(idProductToDelete)
-    handleDeleteBasketProduct(idProductToDelete)
-    idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-   }
+ 
 
   return (
     <StyledMenu>
@@ -68,7 +60,7 @@ const {
             imageSource={imageSource ? imageSource : IMAGE_BY_DEFAUT}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
-            onClick={() => handleClick(id)}
+            onClick={isModeAdmin ?() => handleProductSelected(id) : null}
             onDelete={(event) => handleCardDelete(event, id)} 
             onAdd={(event) => handleAddButton(event, id)}
             isHoverable={isModeAdmin}
