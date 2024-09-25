@@ -4,9 +4,23 @@ import { MdDeleteForever } from "react-icons/md"
 import { theme } from "../../../../../theme"
 import { formatPrice } from "../../../../../utils/maths"
 
-export default function BasketCard({ title, price, quantity, imageSource, className, isModeAdmin, onDelete}) {
+export default function BasketCard({ 
+  title, 
+  price, 
+  quantity, 
+  imageSource, 
+  className, 
+  isClickable, 
+  onDelete,
+  onClick,
+  isSelected, 
+}) {
     return (
-        <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
+        <BasketCardStyled 
+        className={className} 
+        isClickable={isClickable} 
+        onClick={onClick} 
+        isSelected={isSelected}>
             <div className="delete-button" onClick={onDelete}>
                 <MdDeleteForever className="icon" />
             </div>
@@ -28,8 +42,10 @@ export default function BasketCard({ title, price, quantity, imageSource, classN
     )
 }
 
-const BasketCardStyled = styled.div`
-    cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "auto")};
+const BasketCardStyled = styled.div.withConfig({
+  shouldForwardProp: (prop) => !['isClickable', 'isSelected'].includes(prop),
+})`
+    cursor: ${({ isClickable }) => (isClickable ? "pointer" : "auto")};
   /* border: 1px solid red; */
     box-sizing: border-box;
     height: 86px;
@@ -145,4 +161,13 @@ const BasketCardStyled = styled.div`
       }
     }
   }
+
+  ${({ isClickable , isSelected }) => isClickable && isSelected && selectedStyled }
 `
+
+const selectedStyled = css`
+  background: ${theme.colors.primary};
+  .price, .quantity {
+    color: ${theme.colors.white};
+  }
+  `

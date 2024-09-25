@@ -1,22 +1,45 @@
 import styled from 'styled-components';
 import BasketCard from './BasketCard';
 import { DEFAULT_IMAGE } from "../../../../../enums/product"
+import { useContext } from "react"
+import { findObjectById } from "../../../../../utils/array"
+import OrderContext from '../../../../../context/OrderContext'
+import { checkIfProductIsClicked } from '../MainRightSide/Menu/helper';
 
-export default function BasketProducts({basket, isModeAdmin, handleDeleteBasketProduct}) {
+export default function BasketProducts() {
+  const { 
+    basket, 
+    isModeAdmin, 
+    handleDeleteBasketProduct, 
+    menu, 
+    handleProductSelected, 
+    productSelected,
+  } = useContext(OrderContext)
+
   const handleOnDelete = (id) => { 
     handleDeleteBasketProduct(id)
   }
 
+
+
   return (
-    <BasketProductsStyled>{basket.map((basketProduct) => (
-        <div className='basket-card' key={basketProduct.id}>
-          <BasketCard {...basketProduct} 
-          imageSource={basketProduct.imageSource ? basketProduct.imageSource : DEFAULT_IMAGE} 
+    <BasketProductsStyled>
+      {basket.map((basketProduct) => {
+        const menuProduct = findObjectById(basketProduct.id, menu)
+        return (
+          <div className='basket-card' key={basketProduct.id}>
+          <BasketCard 
+          {...menuProduct} 
+          imageSource={menuProduct.imageSource ? menuProduct.imageSource : DEFAULT_IMAGE} 
+          quantity={basketProduct.quantity}
           onDelete={() => handleOnDelete(basketProduct.id)}
-          isModeAdmin={isModeAdmin}
+          isClickable={isModeAdmin}
+          onClick={isModeAdmin ?() => handleProductSelected(basketProduct.id) : null}
+          isSelected={checkIfProductIsClicked(basketProduct.id, productSelected)}
           />
         </div>
-        ))}
+        )
+      })}
     </BasketProductsStyled>
   );
 }

@@ -7,6 +7,7 @@ import { useRef, useState } from "react"
 import { EMPTY_PRODUCT } from "../../../enums/product"
 import { useMenu } from "../../../hooks/useMenu.jsx"
 import { useBasket } from "../../../hooks/useBasket.jsx"
+import { findObjectById } from "../../../utils/array.jsx"
 
 export default function OrderPage () {
    
@@ -20,6 +21,13 @@ export default function OrderPage () {
     const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
     const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
 
+const handleProductSelected = async (idProductClicked) => { 
+   await setCurrentTabSelected("edit")
+   await setIsCollapsed(false)
+   const productClickedOn = findObjectById(idProductClicked, menu)   
+   await setProductSelected(productClickedOn)
+   titleEditRef.current.focus()
+ }
 
     const orderContextValue = {
       isModeAdmin,
@@ -41,6 +49,7 @@ export default function OrderPage () {
       basket,
       handleAddToBasket,
       handleDeleteBasketProduct,
+      handleProductSelected
         }
 
     //Affichage

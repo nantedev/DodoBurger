@@ -1,16 +1,24 @@
 import styled from 'styled-components';
 import { theme } from '../../../../../theme';
 import Bar from '../../../../reusable-ui/Bar';
+import { useContext } from "react"
+import OrderContext from "../../../../../context/OrderContext"
+import { formatPrice } from "../../../../../utils/maths"
+import { calculateSumToPay } from './helper';
 
-export default function Total({amountToPay}) {
+
+export default function Total() {
+  const { basket, menu } = useContext(OrderContext)
+  const sumToPay = calculateSumToPay(basket, menu)
+
   return (
     <Bar>
         <TotalStyled>
             <span className='total'>Total</span>
-            <span className='amount'>{amountToPay}</span>
+            <span className="amount">{formatPrice(sumToPay)}</span>
         </TotalStyled>
     </Bar>
-  );
+  )
 }
 
 const TotalStyled = styled.div`
