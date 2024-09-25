@@ -4,9 +4,17 @@ import { DEFAULT_IMAGE } from "../../../../../enums/product"
 import { useContext } from "react"
 import { findObjectById } from "../../../../../utils/array"
 import OrderContext from '../../../../../context/OrderContext'
+import { checkIfProductIsClicked } from '../MainRightSide/Menu/helper';
 
 export default function BasketProducts() {
-  const { basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected } = useContext(OrderContext)
+  const { 
+    basket, 
+    isModeAdmin, 
+    handleDeleteBasketProduct, 
+    menu, 
+    handleProductSelected, 
+    productSelected,
+  } = useContext(OrderContext)
 
   const handleOnDelete = (id) => { 
     handleDeleteBasketProduct(id)
@@ -27,6 +35,7 @@ export default function BasketProducts() {
           onDelete={() => handleOnDelete(basketProduct.id)}
           isClickable={isModeAdmin}
           onClick={isModeAdmin ?() => handleProductSelected(basketProduct.id) : null}
+          isSelected={checkIfProductIsClicked(basketProduct.id, productSelected)}
           />
         </div>
         )
