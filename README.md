@@ -1,4 +1,4 @@
-# Temporary project previews :
+# Temporary project preview :
 
 https://le-dodo-burger-m2eeijq5a-mickaels-projects-b88dc9c3.vercel.app 
 
