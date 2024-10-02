@@ -3,12 +3,13 @@ import Navbar from "./Navbar/Navbar"
 import Main from "./Main/Main"
 import { theme } from "../../../theme"
 import OrderContext from "../../../context/OrderContext.jsx"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { EMPTY_PRODUCT } from "../../../enums/product"
 import { useMenu } from "../../../hooks/useMenu.jsx"
 import { useBasket } from "../../../hooks/useBasket.jsx"
 import { findObjectById } from "../../../utils/array.jsx"
 import { useParams } from "react-router-dom"
+import { getMenu } from "../../../api/product.js"
 
 export default function OrderPage () {
    
@@ -19,7 +20,7 @@ export default function OrderPage () {
     const [ newProduct, setNewProduct ] = useState(EMPTY_PRODUCT)
     const [ productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
-    const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
+    const {menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
     const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
     const { username } = useParams()
 
@@ -32,6 +33,18 @@ const handleProductSelected = async (idProductClicked) => {
    titleEditRef.current.focus()
  }
 
+  const initialiseMenu = async () => { 
+      const menuReceived = await getMenu(username)
+      console.log("menuReceived :", menuReceived)
+      setMenu(menuReceived)
+   }
+
+  useEffect(async() => {
+    initialiseMenu()
+  }, [])
+
+
+// quand le composant est render (ou appelé =/= de render affichage) il s'execute, il fait une première lecture en ignorant le useEffect, il va identier ensuite le useEffect lors de la seconde lecture
     const orderContextValue = {
       username,
       isModeAdmin,
