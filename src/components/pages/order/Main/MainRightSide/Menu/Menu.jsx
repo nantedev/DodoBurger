@@ -10,6 +10,7 @@ import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 import { findObjectById, isEmpty } from "../../../../../../utils/array"
 const IMAGE_BY_DEFAUT = "/images/coming-soon.png"
+import Loader from "./Loader"
 
 export default function Menu() {
   
@@ -43,6 +44,8 @@ const handleCardDelete = (event, idProductToDelete) => {
  }
 
   //Affichage
+ if (menu === undefined) return <Loader />
+
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />
     return <EmptyMenuAdmin onReset={resetMenu}/>
