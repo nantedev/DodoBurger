@@ -14,7 +14,8 @@ import Loader from "./Loader"
 
 export default function Menu() {
   
-const { 
+const {
+  username, 
   menu, 
   isModeAdmin, 
   handleDelete, 
@@ -38,7 +39,7 @@ const {
 
 const handleCardDelete = (event, idProductToDelete) => {
   event.stopPropagation()
-  handleDelete(idProductToDelete)
+  handleDelete(idProductToDelete, username)
   handleDeleteBasketProduct(idProductToDelete)
   idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
  }

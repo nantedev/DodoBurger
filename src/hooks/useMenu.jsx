@@ -17,14 +17,14 @@ export const useMenu = () => {
         syncBothMenus(username, menuUpdated)
       }
   
-      const handleDelete = (idOfProductToDelete) => {
+      const handleDelete = (idOfProductToDelete, username) => {
         //Copie du state
         const menuCopy = deepClone(menu)
         //Manip copie de state
         const menuUpdated = removeObjectById(idOfProductToDelete, menuCopy)
         //Update State
         setMenu(menuUpdated)
-
+        syncBothMenus(username, menuUpdated)
       }
   
       const handleEdit = (productBeingEdited) => { 
