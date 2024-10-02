@@ -27,14 +27,15 @@ export const useMenu = () => {
         syncBothMenus(username, menuUpdated)
       }
   
-      const handleEdit = (productBeingEdited) => { 
+      const handleEdit = (productBeingEdited, username) => { 
         //Copie du state
         const menuCopy = deepClone(menu)
         //Manip copie de state
         const indexOfProductToEdit = findIndexById(productBeingEdited.id, menu)
         menuCopy[indexOfProductToEdit] = productBeingEdited
         //Update State
-        setMenu(menuCopy)     
+        setMenu(menuCopy)
+        syncBothMenus(username, menuCopy)     
       }
   
       const resetMenu = (username) => {
