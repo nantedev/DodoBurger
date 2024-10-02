@@ -6,21 +6,23 @@ import { IoChevronForwardSharp } from "react-icons/io5"
 import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button"
 import { theme } from "../../../theme"
+import { authenticateUser} from "../../../api/user"
 
 export default function LoginForm() {
     // state
-    const [inputValue, setInputValue] = useState("")
+    const [username, setUsername] = useState("")
     const navigate = useNavigate()
 
     // comportements
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
       event.preventDefault() 
-      setInputValue("")
-      navigate(`order/${inputValue}`)
+      authenticateUser(username)
+      setUsername("")
+      navigate(`order/${username}`)
      }
 
     const handleChange = (event) => {
-      setInputValue(event.target.value)
+      setUsername(event.target.value)
      }
 
      // Affichage
@@ -33,7 +35,7 @@ export default function LoginForm() {
         </div>
         <div>
           <TextInput 
-              value={inputValue} 
+              value={username} 
               onChange={handleChange} 
               placeholder={"Entrez votre prénom"}
               required
