@@ -10,6 +10,7 @@ import { useBasket } from "../../../hooks/useBasket.jsx"
 import { findObjectById } from "../../../utils/array.jsx"
 import { useParams } from "react-router-dom"
 import { getMenu } from "../../../api/product.js"
+import { getLocalStorage } from "../../../utils/window.jsx"
 
 export default function OrderPage () {
    
@@ -21,7 +22,7 @@ export default function OrderPage () {
     const [ productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
     const {menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
-    const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+    const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
     const { username } = useParams()
 
 
@@ -39,8 +40,18 @@ const handleProductSelected = async (idProductClicked) => {
       setMenu(menuReceived)
    }
 
+  const initialiseBasket = () => { 
+      const basketReceived = getLocalStorage(username)
+      setBasket(basketReceived)
+    }
+
+
   useEffect(async() => {
     initialiseMenu()
+  }, [])
+
+  useEffect(async() => {
+    initialiseBasket()
   }, [])
 
 
