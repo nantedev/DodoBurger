@@ -42,7 +42,7 @@ const handleProductSelected = async (idProductClicked) => {
 
   const initialiseBasket = () => { 
       const basketReceived = getLocalStorage(username)
-      setBasket(basketReceived)
+      if(basketReceived) setBasket(basketReceived)
     }
 
 
