@@ -45,13 +45,13 @@ const handleProductSelected = async (idProductClicked) => {
       if(basketReceived) setBasket(basketReceived)
     }
 
-
-  useEffect(async() => {
-    initialiseMenu()
-  }, [])
-
-  useEffect(async() => {
+  const initialiseUserSession = async () => {
+    await initialiseMenu()
     initialiseBasket()
+  }
+
+  useEffect(async() => {
+    initialiseUserSession()
   }, [])
 
 

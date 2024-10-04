@@ -40,7 +40,7 @@ const {
 const handleCardDelete = (event, idProductToDelete) => {
   event.stopPropagation()
   handleDelete(idProductToDelete, username)
-  handleDeleteBasketProduct(idProductToDelete)
+  handleDeleteBasketProduct(idProductToDelete, username)
   idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
  }
 
