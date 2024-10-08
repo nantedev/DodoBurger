@@ -8,6 +8,7 @@ import { checkIfProductIsClicked } from '../MainRightSide/Menu/helper';
 
 export default function BasketProducts() {
   const { 
+    username,
     basket, 
     isModeAdmin, 
     handleDeleteBasketProduct, 
@@ -17,7 +18,7 @@ export default function BasketProducts() {
   } = useContext(OrderContext)
 
   const handleOnDelete = (id) => { 
-    handleDeleteBasketProduct(id)
+    handleDeleteBasketProduct(id, username)
   }
 
 

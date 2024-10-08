@@ -10,10 +10,12 @@ import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 import { findObjectById, isEmpty } from "../../../../../../utils/array"
 const IMAGE_BY_DEFAUT = "/images/coming-soon.png"
+import Loader from "./Loader"
 
 export default function Menu() {
   
-const { 
+const {
+  username, 
   menu, 
   isModeAdmin, 
   handleDelete, 
@@ -32,20 +34,22 @@ const {
   const handleAddButton = (event, idProductToAdd) => {
     event.stopPropagation()
     const productToAdd = findObjectById(idProductToAdd, menu)
-    handleAddToBasket(productToAdd)
+    handleAddToBasket(productToAdd, username)
 }
 
 const handleCardDelete = (event, idProductToDelete) => {
   event.stopPropagation()
-  handleDelete(idProductToDelete)
-  handleDeleteBasketProduct(idProductToDelete)
+  handleDelete(idProductToDelete, username)
+  handleDeleteBasketProduct(idProductToDelete, username)
   idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
  }
 
   //Affichage
+ if (menu === undefined) return <Loader />
+
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />
-    return <EmptyMenuAdmin onReset={resetMenu}/>
+    return <EmptyMenuAdmin onReset={() => resetMenu(username)}/>
   }
 
  
