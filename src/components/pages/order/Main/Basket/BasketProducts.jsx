@@ -4,7 +4,8 @@ import { DEFAULT_IMAGE } from "../../../../../enums/product"
 import { useContext } from "react"
 import { findObjectById } from "../../../../../utils/array"
 import OrderContext from '../../../../../context/OrderContext'
-import { checkIfProductIsClicked } from '../MainRightSide/Menu/helper';
+import { checkIfProductIsClicked } from '../MainRightSide/Menu/helper'
+import { TransitionGroup, CSSTransition} from "react-transition-group"
 
 export default function BasketProducts() {
   const { 
@@ -24,24 +25,27 @@ export default function BasketProducts() {
 
 
   return (
-    <BasketProductsStyled>
-      {basket.map((basketProduct) => {
-        const menuProduct = findObjectById(basketProduct.id, menu)
-        return (
-          <div className='basket-card' key={basketProduct.id}>
-          <BasketCard 
-          {...menuProduct} 
-          imageSource={menuProduct.imageSource ? menuProduct.imageSource : DEFAULT_IMAGE} 
-          quantity={basketProduct.quantity}
-          onDelete={() => handleOnDelete(basketProduct.id)}
-          isClickable={isModeAdmin}
-          onClick={isModeAdmin ?() => handleProductSelected(basketProduct.id) : null}
-          isSelected={checkIfProductIsClicked(basketProduct.id, productSelected)}
-          />
-        </div>
-        )
-      })}
-    </BasketProductsStyled>
+      <TransitionGroup component={BasketProductsStyled} className={"transition-group"}>
+        {basket.map((basketProduct) => {
+          const menuProduct = findObjectById(basketProduct.id, menu)
+          return (
+            <CSSTransition appear={true} classNames={"animation"} key={basketProduct.id} timeout={{enter:500, exit:500}}>
+              <div className='basket-card'>
+              <BasketCard
+              {...menuProduct}
+              imageSource={menuProduct.imageSource ? menuProduct.imageSource : DEFAULT_IMAGE}
+              quantity={basketProduct.quantity}
+              onDelete={() => handleOnDelete(basketProduct.id)}
+              isClickable={isModeAdmin}
+              onClick={isModeAdmin ?() => handleProductSelected(basketProduct.id) : null}
+              isSelected={checkIfProductIsClicked(basketProduct.id, productSelected)}
+              className={"slide"}
+              />
+              </div>
+            </CSSTransition>
+          )
+        })}
+      </TransitionGroup>
   );
 }
 
@@ -51,6 +55,59 @@ const BasketProductsStyled = styled.div`
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+
+
+    .animation-appear {
+    .slide {
+      transform: translateX(100px);
+      opacity: 0%;
+    }
+  }
+
+  .animation-appear-active {
+    .slide {
+      transition: 0.5s;
+      transform: translateX(0px);
+      opacity: 100%;
+    }
+  }
+
+  .animation-enter {
+    .slide {
+      transform: translateX(100px);
+      opacity: 0%;
+    }
+  }
+  .animation-enter-active {
+    .slide {
+      transition: 0.5s;
+      transform: translateX(0px);
+      opacity: 100%;
+    }
+  }
+
+
+  .animation-exit {
+    .slide {
+      transform: translateX(0px);
+      opacity: 100%;
+    }
+  }
+
+  .animation-exit-active {
+    .slide {
+      transform: translateX(-100px);
+      opacity: 0%;
+      transition: 0.5s;
+    }
+  }
+  .animation-exit-done {
+    .slide {
+    background: grey;
+    transition: 2s;
+    }
+  }
+
     .basket-card {
         /* border: 1px solid blue; */
         margin: 10px 16px;
