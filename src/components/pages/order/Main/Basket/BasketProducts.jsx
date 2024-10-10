@@ -29,8 +29,12 @@ export default function BasketProducts() {
         {basket.map((basketProduct) => {
           const menuProduct = findObjectById(basketProduct.id, menu)
           return (
-            <CSSTransition appear={true} classNames={"animation"} key={basketProduct.id} timeout={{enter:500, exit:500}}>
-              <div className='basket-card'>
+            <CSSTransition 
+              appear={true} 
+              classNames={"animation-basket"} 
+              key={basketProduct.id} 
+              timeout={300}>
+              <div className='card-container'>
               <BasketCard
               {...menuProduct}
               imageSource={menuProduct.imageSource ? menuProduct.imageSource : DEFAULT_IMAGE}
@@ -39,7 +43,7 @@ export default function BasketProducts() {
               isClickable={isModeAdmin}
               onClick={isModeAdmin ?() => handleProductSelected(basketProduct.id) : null}
               isSelected={checkIfProductIsClicked(basketProduct.id, productSelected)}
-              className={"slide"}
+              className={"card"}
               />
               </div>
             </CSSTransition>
@@ -57,29 +61,29 @@ const BasketProductsStyled = styled.div`
     overflow-y: scroll;
 
 
-    .animation-appear {
-    .slide {
+    .animation-basket-appear {
+    .card {
       transform: translateX(100px);
       opacity: 0%;
     }
   }
 
-  .animation-appear-active {
-    .slide {
+  .animation-basket-appear-active {
+    .card {
       transition: 0.5s;
       transform: translateX(0px);
       opacity: 100%;
     }
   }
 
-  .animation-enter {
-    .slide {
+  .animation-basket-enter {
+    .card {
       transform: translateX(100px);
       opacity: 0%;
     }
   }
-  .animation-enter-active {
-    .slide {
+  .animation-basket-enter-active {
+    .card {
       transition: 0.5s;
       transform: translateX(0px);
       opacity: 100%;
@@ -87,28 +91,28 @@ const BasketProductsStyled = styled.div`
   }
 
 
-  .animation-exit {
-    .slide {
+  .animation-basket-exit {
+    .card {
       transform: translateX(0px);
       opacity: 100%;
     }
   }
 
-  .animation-exit-active {
-    .slide {
+  .animation-basket-exit-active {
+    .card {
       transform: translateX(-100px);
       opacity: 0%;
       transition: 0.5s;
     }
   }
-  .animation-exit-done {
-    .slide {
+  .animation-basket-exit-done {
+    .card {
     background: grey;
     transition: 2s;
     }
   }
 
-    .basket-card {
+    .card-container {
         /* border: 1px solid blue; */
         margin: 10px 16px;
         height: 86px;
