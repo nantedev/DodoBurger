@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import BasketCard from '../BasketCard';
+import BasketCard from './BasketCard';
 import { DEFAULT_IMAGE } from "../../../../../../enums/product"
 import { useContext } from "react"
 import { findObjectById } from "../../../../../../utils/array"
