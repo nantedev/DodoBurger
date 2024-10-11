@@ -2,17 +2,17 @@ import styled from 'styled-components';
 import Bar from '../../../../reusable-ui/Bar';
 import { theme } from '../../../../../theme';
 
-export default function Footer() {
+export default function BasketFooter() {
   return (
     <Bar>
-        <FooterStyled>
+        <BasketFooterStyled>
             <span>Codé avec ❤️ et React.JS</span>
-        </FooterStyled>
+        </BasketFooterStyled>
     </Bar>
   );
 }
 
-const FooterStyled = styled.div`
+const BasketFooterStyled = styled.div`
     height: 100%;
     display: flex;
     justify-content: center;
