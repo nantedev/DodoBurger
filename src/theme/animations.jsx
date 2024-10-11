@@ -75,3 +75,38 @@ export const basketAnimation = css`
     }
   }
 `
+
+
+export const menuAnimation = css`
+
+  .animation-menu-enter {
+      transform: translateX(-120px);
+      opacity: 0.01;
+      &.animation-menu-enter-active {
+      opacity: 1;
+      transform: translateX(0);
+      transition: all ${theme.animations.speed.quick} ease-out;
+  }
+  }
+
+  .animation-menu-exit {
+      opacity: 1;   
+      transform: translateY(0);
+      &.animation-menu-exit-active {
+      opacity: 0.01;
+      transition: ${theme.animations.speed.quick} ease-out;
+  }
+  }
+`
+
+export const fadeInFromBottom = keyframes`
+0% {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+100% {
+    transform: translateY(0%);
+    opacity: 1;
+}
+`

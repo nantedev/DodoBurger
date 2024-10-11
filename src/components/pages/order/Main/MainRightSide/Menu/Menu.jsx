@@ -11,6 +11,8 @@ import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 import { findObjectById, isEmpty } from "../../../../../../utils/array"
 const IMAGE_BY_DEFAUT = "/images/coming-soon.png"
 import Loader from "./Loader"
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { menuAnimation } from "../../../../../../theme/animations";
 
 export default function Menu() {
   
@@ -55,24 +57,26 @@ const handleCardDelete = (event, idProductToDelete) => {
  
 
   return (
-    <StyledMenu>
+    <TransitionGroup component={StyledMenu} className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
         return (
-          <Card
-            key={id}
-            title={title}
-            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAUT}
-            leftDescription={formatPrice(price)}
-            hasDeleteButton={isModeAdmin}
-            onClick={isModeAdmin ?() => handleProductSelected(id) : null}
-            onDelete={(event) => handleCardDelete(event, id)} 
-            onAdd={(event) => handleAddButton(event, id)}
-            isHoverable={isModeAdmin}
-            isSelected={checkIfProductIsClicked(id, productSelected)}
-          />
+          <CSSTransition classNames={"animation-menu"} key={id} timeout={300}>
+            <Card
+              key={id}
+              title={title}
+              imageSource={imageSource ? imageSource : IMAGE_BY_DEFAUT}
+              leftDescription={formatPrice(price)}
+              hasDeleteButton={isModeAdmin}
+              onClick={isModeAdmin ?() => handleProductSelected(id) : null}
+              onDelete={(event) => handleCardDelete(event, id)}
+              onAdd={(event) => handleAddButton(event, id)}
+              isHoverable={isModeAdmin}
+              isSelected={checkIfProductIsClicked(id, productSelected)}
+            />
+          </CSSTransition>
         )
       })}
-    </StyledMenu>
+    </TransitionGroup>
   )
 }
 
@@ -87,4 +91,6 @@ const StyledMenu  = styled.div`
     justify-items: center;
     box-shadow: ${theme.shadows.strong};
     overflow-y: scroll ;
+
+    ${menuAnimation}
 `
