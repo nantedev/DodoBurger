@@ -1,4 +1,4 @@
-import { findObjectById } from "../../../../../utils/array.jsx"
+import { findObjectById } from "../../../../../../utils/array.jsx"
 
 export const calculateSumToPay = (basket, menu) => {
     return basket.reduce((total, basketProduct) => {
