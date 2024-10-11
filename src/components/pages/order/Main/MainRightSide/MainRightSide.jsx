@@ -4,8 +4,6 @@ import OrderContext from "../../../../../context/OrderContext"
 import { theme } from "../../../../../theme"
 import Admin from "./Admin/Admin"
 import Menu from "./Menu/Menu"
-import { TransitionGroup, CSSTransition  } from "react-transition-group"
-import { adminAnimation } from "../../../../../theme/animations"
 
 export default function MainRightSide() {
   const { isModeAdmin } = useContext(OrderContext)
@@ -13,24 +11,14 @@ export default function MainRightSide() {
   return (
     <MainRightSideStyled>
       <Menu />
-      {isModeAdmin && (
-      <TransitionGroup className="transition-group">
-        <CSSTransition appear classNames="admin" timeout={500}>
-          <Admin />
-        </CSSTransition>
-      </TransitionGroup>
-      )}
+      {isModeAdmin && <Admin />}
     </MainRightSideStyled>
   )
 }
-
-
 
 const MainRightSideStyled = styled.div`
   position: relative;
   overflow-y: hidden;
   display: grid;
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
-
-  ${adminAnimation}
 `
