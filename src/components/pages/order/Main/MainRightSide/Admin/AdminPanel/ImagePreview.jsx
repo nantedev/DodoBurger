@@ -1,15 +1,21 @@
 import styled from 'styled-components';
 import { theme } from '../../../../../../../theme/index';
+import { imgAnimation } from '../../../../../../../theme/animations';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 export default function ImagePreview({imageSource, title}) {
   return (
-    <ImagePreviewStyled >
+    <TransitionGroup component={ImagePreviewStyled} >
           {imageSource ? (
-          <img src={imageSource} alt={title} /> 
+
+          <CSSTransition appear classNames="image-animation" key={title} timeout={500}>
+            <img src={imageSource} alt={title} /> 
+          </CSSTransition>
+        
         ) :  (
         <div className='empty-image'>Aucune Image</div>
         )}
-    </ImagePreviewStyled>
+    </TransitionGroup>
   );
 }
 
@@ -18,7 +24,7 @@ const ImagePreviewStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
+    ${imgAnimation} 
     img {
       width: 100px;
       height: 100px;
@@ -37,5 +43,7 @@ const ImagePreviewStyled = styled.div`
         color: ${theme.colors.greySemiDark};
         border-radius: ${theme.borderRadius.round};
     }
+
+    
 `
 

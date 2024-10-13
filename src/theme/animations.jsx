@@ -110,3 +110,28 @@ export const fadeInFromBottom = keyframes`
     opacity: 1;
 }
 `
+export const imgAnimation = css`
+  .image-animation-appear  {
+    opacity: 0;
+  &.image-animation-appear-active  {
+    opacity: 1;
+    transition: ${theme.animations.speed.quick}
+  }
+}
+.image-animation-enter  {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.5;
+  &.image-animation-enter-active  {
+    opacity: 1;
+    transition: ${theme.animations.speed.quick}
+  }
+}
+.image-animation-exit  {
+    opacity: 0.25;
+  &.image-animation-exit-active  {
+    opacity: 0;
+    transition: ${theme.animations.speed.quick}
+  }
+}
+`
