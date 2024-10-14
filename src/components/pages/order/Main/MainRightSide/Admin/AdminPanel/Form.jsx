@@ -27,7 +27,16 @@ const Form = React.forwardRef(({product, onSubmit, onChange, onFocus, onBlur, ch
                  onBlur={onBlur}
                  ref={ref && input.name === "title" ? ref : null}
               />
-             ))} 
+             ))}
+             <select name="isAvailable" className="is-available" id="3">
+              <option value={true}>En stock</option>
+              <option value={false}>En rupture</option>
+              </select> 
+              <select name="isPublicised" className="is-publicised" id="4">
+              <option value={true}>Sans pub</option>
+              <option value={false}>Avec pub</option>
+              </select> 
+             
       </div>
       <div className="footer">
        {children}
@@ -57,12 +66,13 @@ const FormStyled = styled.form`
     grid-area: input-fields ;
     display: grid;
     grid-row-gap: 8px;
+    grid-column-gap: 8px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-template-areas: 
     "title title title"
     "image-source image-source image-source"
-    "price . ."
+    "price is-available is-publicised"
     ;
 
     .title {
@@ -74,6 +84,13 @@ const FormStyled = styled.form`
     .price {
       grid-area : price;
     }
+    .is-available {
+      grid-area: is-available;
+    }
+    .is-publicised {
+      grid-area: is-publicised;
+    }
+
   }
 
   .footer{
