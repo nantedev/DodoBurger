@@ -3,6 +3,17 @@ import TextInput from '../../../../../../reusable-ui/TextInput';
 import ImagePreview from './ImagePreview';
 import { getInputTextsConfig } from './inputTextsConfig';
 import React from 'react';
+import SelectInput from '../../../../../../reusable-ui/SelectInput';
+
+const isAvailableOptions = [
+  {value: true, label:"En stock"},
+  {value: false, label:"En rupture"},
+]
+
+const isPublicisedOptions = [
+  {value: true, label:"Sans pub"},
+  {value: false, label:"Avec pub"},
+]
 
 
 const Form = React.forwardRef(({product, onSubmit, onChange, onFocus, onBlur, children}, ref) => {
@@ -28,14 +39,9 @@ const Form = React.forwardRef(({product, onSubmit, onChange, onFocus, onBlur, ch
                  ref={ref && input.name === "title" ? ref : null}
               />
              ))}
-             <select name="isAvailable" className="is-available" id="3">
-              <option value={true}>En stock</option>
-              <option value={false}>En rupture</option>
-              </select> 
-              <select name="isPublicised" className="is-publicised" id="4">
-              <option value={true}>Sans pub</option>
-              <option value={false}>Avec pub</option>
-              </select> 
+
+              <SelectInput name="isAvailable" options={isAvailableOptions} className="is-available" id="3"/>
+              <SelectInput name="isPublicised" options={isPublicisedOptions} className="is-publicised" id="4"/>
              
       </div>
       <div className="footer">
