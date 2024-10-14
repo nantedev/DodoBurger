@@ -25,6 +25,7 @@ const ImagePreviewStyled = styled.div`
     justify-content: center;
     align-items: center;
     ${imgAnimation} 
+    
     img {
       width: 100px;
       height: 100px;

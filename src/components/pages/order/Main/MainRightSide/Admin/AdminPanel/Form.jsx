@@ -57,6 +57,23 @@ const FormStyled = styled.form`
     grid-area: input-fields ;
     display: grid;
     grid-row-gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 
+    "title title title"
+    "image-source image-source image-source"
+    "price . ."
+    ;
+
+    .title {
+      grid-area : title;    
+    }
+    .image-Source {
+      grid-area : image-source;
+    }
+    .price {
+      grid-area : price;
+    }
   }
 
   .footer{
