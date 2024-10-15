@@ -13,6 +13,7 @@ const IMAGE_BY_DEFAUT = "/images/coming-soon.png"
 import Loader from "./Loader"
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { menuAnimation } from "../../../../../../theme/animations";
+import { convertStringToBoolean } from "../../../../../../utils/string"
 
 export default function Menu() {
   
@@ -58,7 +59,7 @@ const handleCardDelete = (event, idProductToDelete) => {
 
   return (
     <TransitionGroup component={StyledMenu} className="menu">
-      {menu.map(({ id, title, imageSource, price }) => {
+      {menu.map(({ id, title, imageSource, price, isAvailable }) => {
         return (
           <CSSTransition classNames={"animation-menu"} key={id} timeout={300}>
             <Card
@@ -73,7 +74,7 @@ const handleCardDelete = (event, idProductToDelete) => {
               isHoverable={isModeAdmin}
               isSelected={checkIfProductIsClicked(id, productSelected)}
               overlapImageSource={NO_STOCK_IMAGE}
-              isOverlapImageVisible={true}
+              isOverlapImageVisible={convertStringToBoolean(isAvailable) === false}
             />
           </CSSTransition>
         )

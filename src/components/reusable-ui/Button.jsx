@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components"
 import { theme } from "../../theme"
 
-export default function Button({label, Icon, className, version="normal", onClick}) {
+export default function Button({label, Icon, className, version="normal", onClick, disabled }) {
   return (
-    <ButtonStyled className={className} version={version} onClick={onClick}>
+    <ButtonStyled className={className} version={version} onClick={onClick} disabled={disabled}>
     <span>{label}</span>
     <div className="icon">{Icon && Icon}</div>
     </ButtonStyled>
@@ -14,7 +14,7 @@ const ButtonStyled = styled.button`
   ${({version}) => extraStyle[version]};
 `
 
-const extraStylePrimary = css`
+const extraStyleNormal = css`
     width: 100%;
     background-color: #FB9E1C;
     display: inline-flex;
@@ -31,6 +31,7 @@ const extraStylePrimary = css`
     font-weight: 800;
     color: white;
     border: 1px solid #FB9E1C;
+    cursor: pointer;
 
     &:hover:not(:disabled) {
       background-color: white;
@@ -40,8 +41,9 @@ const extraStylePrimary = css`
     }
 
     &:disableld {
-      opacity: 0.6;
+      opacity: 50%;
       cursor: not-allowed;
+      z-index: 2;
     }
   
     .icon {
@@ -67,7 +69,7 @@ const extraStyleSuccess = css`
     border: 1px solid ${theme.colors.success};
   }
 
-  :active {
+  &:active {
     color: ${theme.colors.white};
     background: ${theme.colors.success};
     border: 1px solid ${theme.colors.success};
@@ -75,6 +77,6 @@ const extraStyleSuccess = css`
 `
 
 const extraStyle = {
-  normal: extraStylePrimary,
+  normal: extraStyleNormal,
   success: extraStyleSuccess,
 }

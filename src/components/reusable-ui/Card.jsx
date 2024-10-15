@@ -41,7 +41,12 @@ export default function Card({
                 <div className="description">
                     <div className="left-description">{leftDescription}</div>
                     <div className="right-description">
-                    <Button className="primary-button" label={"Ajouter"} onClick={onAdd}/>
+                    <Button 
+                    className="primary-button" 
+                    label={"Ajouter"} 
+                    onClick={onAdd}
+                    disabled={isOverlapImageVisible}
+                    />
                     </div>
                 </div>
                 </div>
@@ -180,7 +185,6 @@ const CardStyled = styled.div.withConfig({
 
             .primary-button {
             font-size: ${theme.fonts.size.XS};
-            cursor: pointer;
             padding: 12px;
             }
         }
