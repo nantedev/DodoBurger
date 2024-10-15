@@ -1,23 +1,52 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
+import { theme } from "../../theme"
 
-export default function SelectInput({name, options, value, className, id, onChange, onFocus, onBlur}) {
-  return (             
-    <SelectInputStyled 
-    value={value} 
-    name={name} 
-    className={className} 
-    id={id} 
-    onChange={onChange} 
-    onFocus={onFocus}
-    onBlur={onBlur}
-    >
-    {options.map(({value, label}) => (
-     <option key={label} value={value}>{label}</option>
-    ))}
-     </SelectInputStyled>
-  );
-}
+export default function SelectInput({
+    options,
+    value,
+    name,
+    Icon,
+    className,
+    onChange,
+    ...restProps
+  }) {
+    return (
+      <SelectInputStyled className={className}>
+        {Icon && <div className="icon">{Icon}</div>}
+        <select name={name} value={value} onChange={onChange} {...restProps}>
+          {options.map(({ optionValue, label }) => (
+            <option key={label} value={optionValue}>
+              {label}
+            </option>
+          ))}
+        </select>
+      </SelectInputStyled>
+    )
+  }
 
-const SelectInputStyled = styled.select`
-  border: 1px solid red;
-`;
+const SelectInputStyled = styled.div`
+   /* border: 1px solid yellow; */
+   background-color: ${theme.colors.background_white};
+  border-radius: ${theme.borderRadius.round};
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+
+  .icon {
+    /* border: 1px solid red; */
+    font-size: ${theme.fonts.P1};
+    margin-right: 13px;
+    color: ${theme.colors.greyBlue};
+    display: flex; // centre verticalement l'icône dans le champ select
+  }
+
+  select {
+    /* border: 1px solid blue; */
+    background: ${theme.colors.background_white};
+    border: none;
+    font-size: ${theme.fonts.size.SM};
+    color: ${theme.colors.dark};
+    width: 100%;
+    outline: 0;
+  }
+`
