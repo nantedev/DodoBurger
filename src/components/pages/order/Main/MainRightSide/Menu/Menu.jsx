@@ -7,7 +7,7 @@ import OrderContext from "../../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product";
+import { EMPTY_PRODUCT, NO_STOCK_IMAGE } from "../../../../../../enums/product";
 import { findObjectById, isEmpty } from "../../../../../../utils/array"
 const IMAGE_BY_DEFAUT = "/images/coming-soon.png"
 import Loader from "./Loader"
@@ -72,6 +72,8 @@ const handleCardDelete = (event, idProductToDelete) => {
               onAdd={(event) => handleAddButton(event, id)}
               isHoverable={isModeAdmin}
               isSelected={checkIfProductIsClicked(id, productSelected)}
+              overlapImageSource={NO_STOCK_IMAGE}
+              isOverlapImageVisible={true}
             />
           </CSSTransition>
         )
