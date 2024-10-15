@@ -1,19 +1,9 @@
 import styled from 'styled-components';
 import TextInput from '../../../../../../reusable-ui/TextInput';
 import ImagePreview from './ImagePreview';
-import { getInputTextsConfig } from './inputTextsConfig';
+import { getTextInputConfig, getSelectInputConfig } from './inputConfig';
 import React from 'react';
 import SelectInput from '../../../../../../reusable-ui/SelectInput';
-
-const isAvailableOptions = [
-  {value: true, label:"En stock"},
-  {value: false, label:"En rupture"},
-]
-
-const isPublicisedOptions = [
-  {value: true, label:"Sans pub"},
-  {value: false, label:"Avec pub"},
-]
 
 
 const Form = React.forwardRef(({product, onSubmit, onChange, onFocus, onBlur, children}, ref) => {
@@ -21,13 +11,15 @@ const Form = React.forwardRef(({product, onSubmit, onChange, onFocus, onBlur, ch
 
   //Comportement(empty)
 
-   const inputTexts = getInputTextsConfig(product)
+  const textInputs = getTextInputConfig(product)
+  const selectInputs = getSelectInputConfig(product)
+
    //Affichage
   return (
     <FormStyled onSubmit={onSubmit}>
        <ImagePreview imageSource={product.imageSource} title={product.title} />
       <div className="input-fields">
-             {inputTexts.map((input) => (
+             {textInputs.map((input) => (
               <TextInput 
               key={input.id}
                 {...input}
@@ -40,8 +32,9 @@ const Form = React.forwardRef(({product, onSubmit, onChange, onFocus, onBlur, ch
               />
              ))}
 
-              <SelectInput name="isAvailable" options={isAvailableOptions} className="is-available" id="3"/>
-              <SelectInput name="isPublicised" options={isPublicisedOptions} className="is-publicised" id="4"/>
+             {selectInputs.map((select) => (
+                  <SelectInput  {...select} />
+             ))}
              
       </div>
       <div className="footer">
