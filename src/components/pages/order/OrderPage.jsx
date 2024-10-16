@@ -14,9 +14,9 @@ import { initialiseUserSession } from "./helpers/initialiseUserSession.jsx"
 export default function OrderPage () {
    
     //State
-    const [isModeAdmin, setIsModeAdmin] = useState(true)
-    const [isCollapsed, setIsCollapsed]= useState(true)
-    const [currentTabSelected, setCurrentTabSelected] = useState("edit")
+    const [isModeAdmin, setIsModeAdmin] = useState(false)
+    const [isCollapsed, setIsCollapsed]= useState(false)
+    const [currentTabSelected, setCurrentTabSelected] = useState("add")
     const [ newProduct, setNewProduct ] = useState(EMPTY_PRODUCT)
     const [ productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()

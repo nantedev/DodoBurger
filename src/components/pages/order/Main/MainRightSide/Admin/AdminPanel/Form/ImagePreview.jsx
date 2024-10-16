@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { theme } from '../../../../../../../theme/index';
-import { imgAnimation } from '../../../../../../../theme/animations';
+import { theme } from '../../../../../../../../theme/index';
+import { imgAnimation } from '../../../../../../../../theme/animations';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 export default function ImagePreview({imageSource, title}) {
@@ -25,6 +25,7 @@ const ImagePreviewStyled = styled.div`
     justify-content: center;
     align-items: center;
     ${imgAnimation} 
+    
     img {
       width: 100px;
       height: 100px;

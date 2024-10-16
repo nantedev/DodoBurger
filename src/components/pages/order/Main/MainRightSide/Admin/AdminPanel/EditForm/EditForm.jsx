@@ -1,10 +1,10 @@
 import { useContext } from 'react'
-import OrderContext from '../../../../../../../context/OrderContext'
-import Form from "./Form"
+import OrderContext from '../../../../../../../../context/OrderContext'
+import Form from "../Form/Form"
 import EditInfoMessage from './EditInfoMessage'
 import { useState } from 'react'
 import SavingMessage from './SavingMessage'
-import { useSuccessMessage } from '../../../../../../../hooks/useSuccessMessage'
+import { useSuccessMessage } from '../../../../../../../../hooks/useSuccessMessage'
 
 export default function EditForm() {
   //State
