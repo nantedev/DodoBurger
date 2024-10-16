@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../../../../../../../theme/index';
+import { theme } from '../../../../../../../../theme';
 
 export default function EditInfoMessage() {
   return (
