@@ -16,7 +16,7 @@ const ButtonStyled = styled.button`
 
 const extraStyleNormal = css`
     width: 100%;
-    background-color: #FB9E1C;
+    background-color: ${theme.colors.primary};
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -30,13 +30,13 @@ const extraStyleNormal = css`
     font-size: 15px;
     font-weight: 800;
     color: white;
-    border: 1px solid #FB9E1C;
+    border: 1px solid ${theme.colors.primary};
     cursor: pointer;
 
     &:hover:not(:disabled) {
-      background-color: white;
-      color: #FB9E1C;
-      border: 1px solid #FB9E1C;
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.primary};
       transition: all 200ms ease-out;
     }
 
