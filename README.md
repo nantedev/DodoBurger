@@ -1,6 +1,6 @@
 # Temporary project preview :
 
-https://le-dodo-burger-m2eeijq5a-mickaels-projects-b88dc9c3.vercel.app 
+https://le-dodo-burger-76t4jnd7e-mickaels-projects-b88dc9c3.vercel.app
 
 # React + Vite
 
