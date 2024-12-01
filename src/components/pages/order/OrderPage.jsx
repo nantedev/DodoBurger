@@ -78,14 +78,13 @@ const handleProductSelected = async (idProductClicked) => {
 }
 
 const OrderPageStyled  = styled.div`
-  background-color: ${theme.colors.primary};
+  background-color: #7C2D18;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .container {
-    background-color: red;
     height: 95vh;
     width: 1400px;
     display: flex;
