@@ -23,7 +23,7 @@ const EmptyMenuStyled = styled.div`
   .title,
   .description {
     text-align: center;
-    font-family: "Amatic SC", cursive;
+    font-family: ${theme.fonts.family.stylish};
     color: ${theme.colors.greyBlue};
   }
 

@@ -49,6 +49,7 @@ const fonts = {
     semiBold: 600,
     bold: 700,
     heavy: 800,
+    black: 900,
   },
   family: {
     stylish: '"Amatic SC", cursive',
