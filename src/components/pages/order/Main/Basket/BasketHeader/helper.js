@@ -1,5 +1,5 @@
-import { findObjectById } from "../../../../../../utils/array.jsx"
-import { convertStringToBoolean } from "../../../../../../utils/string.js"
+import { findObjectById } from "../../../../../../utils/array"
+import { convertStringToBoolean } from "../../../../../../utils/string"
 
 export const calculateSumToPay = (basket, menu) => {
     return basket.reduce((total, basketProduct) => {

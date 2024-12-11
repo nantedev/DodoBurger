@@ -23,7 +23,7 @@ const LoginPageStyled  = styled.div`
 
     ::before {
     content: "";
-    background: url("/images/burger-and-fries-background.png") rgba(0, 0, 0, 0.8);
+    background: url("/images/burger-background.jpg") rgba(0, 0, 0, 0.8);
     background-size: cover;
     background-position: center;
     background-blend-mode: darken;
