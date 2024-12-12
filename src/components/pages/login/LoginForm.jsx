@@ -55,9 +55,11 @@ const LoginFormStyled = styled.form`
   max-width: 500px;
   min-width: 400px;
   margin: 0px auto;
-  padding: 2.5rem ${theme.spacing.lg};
+  padding: 2 ${theme.spacing.lg};
   border-radius: ${theme.borderRadius.round};
-  font-family: ${theme.fonts.family.stylish};
+  font-family: ${theme.fonts.family.authentique};
+  font-weight: ${theme.fonts.weights.black};
+  text-shadow: ${theme.fonts.shadow.simple};
 
   hr {
     border: 1.5px solid ${theme.colors.loginLine};

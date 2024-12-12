@@ -78,7 +78,7 @@ const handleProductSelected = async (idProductClicked) => {
 }
 
 const OrderPageStyled  = styled.div`
-  background-color: #7C2D18;
+  background-image: linear-gradient(to left bottom, #c03d3b, #c94540, #d24e45, #db564b, #e45e50, #e45e50, #e45e50, #e45e50, #db564b, #d24e45, #c94540, #c03d3b);
   height: 100vh;
   display: flex;
   justify-content: center;

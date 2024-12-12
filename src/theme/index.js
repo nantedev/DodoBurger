@@ -4,7 +4,7 @@ const colors = {
   white: "#fff",
   background_white: "#f5f5f7",
   background_dark: "#292729",
-  primary: "#ffa01b",
+  primary: "#FF9831",
   green: "green",
   success: "#60bd4f",
   red: "#e25549",
@@ -53,8 +53,13 @@ const fonts = {
   },
   family: {
     stylish: '"Amatic SC", cursive',
+    authentique: '"Montserrat", serif',
+  },
+  shadow: {
+   simple: "2px 3px 1px #969696",
   },
 }
+
 const gridUnit = 8
 const borderRadius = {
   subtle: 1,

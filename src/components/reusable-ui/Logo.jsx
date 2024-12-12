@@ -32,8 +32,8 @@ const LogoStyled = styled.div`
     img {
       object-fit: contain;
       object-position: center;
-      height: 60px;
-      width: 80px;
+      height: 69px;
+      width: 89px;
       margin: 0 ${theme.gridUnit / 2};
     }
 `;
