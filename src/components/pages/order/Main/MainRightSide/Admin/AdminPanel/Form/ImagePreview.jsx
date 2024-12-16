@@ -6,15 +6,15 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 export default function ImagePreview({imageSource, title}) {
   return (
     <TransitionGroup component={ImagePreviewStyled} >
+        <CSSTransition appear classNames="image-animation" key={title} timeout={500}>
           {imageSource ? (
-
-          <CSSTransition appear classNames="image-animation" key={title} timeout={500}>
             <img src={imageSource} alt={title} /> 
-          </CSSTransition>
+          
         
         ) :  (
         <div className='empty-image'>Aucune Image</div>
         )}
+        </CSSTransition>
     </TransitionGroup>
   );
 }
@@ -24,7 +24,7 @@ const ImagePreviewStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    ${imgAnimation} 
+    ${imgAnimation}
     
     img {
       width: 100px;
