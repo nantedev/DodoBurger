@@ -20,7 +20,7 @@ const LoginPageStyled  = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to right bottom, #c03d3b, #c94540, #d24e45, #db564b, #e45e50, #e45e50, #e45e50, #e45e50, #db564b, #d24e45, #c94540, #c03d3b);
+  background-image: radial-gradient(circle, #8a5e97, #7d5d95, #705d92, #645c8e, #595a89, #505984, #47577e, #405578, #395270, #344f68, #314c60, #2f4858);
 
     .logo-login-page {
       zoom: 3; // or transform: scale(2.5);
