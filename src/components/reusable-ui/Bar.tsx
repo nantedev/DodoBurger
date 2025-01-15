@@ -1,7 +1,11 @@
 import styled from 'styled-components';
-import { theme } from '../../theme';
+import { theme } from '../../theme/theme';
 
-export default function Bar({children}) {
+type BarProps = {
+  children: React.ReactNode
+}
+
+export default function Bar({children}: BarProps) {
   return (
     <BarStyled>{children}</BarStyled>
   );
