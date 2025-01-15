@@ -1,5 +1,4 @@
-import { useContext } from 'react'
-import OrderContext from '../../../../../../../../context/OrderContext'
+import {useOrderContext} from '../../../../../../../../context/OrderContext'
 import Form from "../Form/Form"
 import EditInfoMessage from './EditInfoMessage'
 import { useState } from 'react'
@@ -8,7 +7,7 @@ import { useSuccessMessage } from '../../../../../../../../hooks/useSuccessMessa
 
 export default function EditForm() {
   //State
-  const { username, productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext) 
+  const { username, productSelected, setProductSelected, handleEdit, titleEditRef } = useOrderContext()
   const [valueOnFocus, setValueOnFocus] = useState()
   const { isSubmitted: isSaved, displaySuccessMessage } = useSuccessMessage()
   

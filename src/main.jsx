@@ -1,12 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import { BrowserRouter } from "react-router-dom"
+import { createRoot } from "react-dom/client"
+import "./index.css"
+import { ThemeProvider } from "styled-components"
+import { theme } from "./theme"
+import { RouterProvider } from "react-router-dom"
+import { router } from "./routers/router"
+import { OrderContextProvider } from "./context/OrderContext"
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+createRoot(document.getElementById("root")).render(
+  <ThemeProvider theme={theme}>
+    <OrderContextProvider>
+      <RouterProvider router={router} />
+    </OrderContextProvider>
+  </ThemeProvider>
 )
