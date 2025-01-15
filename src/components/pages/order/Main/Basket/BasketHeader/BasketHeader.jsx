@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 import { theme } from '../../../../../../theme';
 import Bar from '../../../../../reusable-ui/Bar';
-import { useContext } from "react"
-import OrderContext from "../../../../../../context/OrderContext"
+import {useOrderContext} from "../../../../../../context/OrderContext"
 import { formatPrice } from "../../../../../../utils/maths"
 import { calculateSumToPay } from './helper';
 import CasinoEffect from '../../../../../reusable-ui/CasinoEffect';
 
 
 export default function BasketHeader() {
-  const { basket, menu } = useContext(OrderContext)
+  const { basket, menu } = useOrderContext()
   const sumToPay = calculateSumToPay(basket, menu)
 
   return (

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import BasketCard from './BasketCard';
 import { BASKET_MESSAGE, DEFAULT_IMAGE } from "../../../../../../enums/product"
-import { useContext } from "react"
 import { findObjectById } from "../../../../../../utils/array"
-import OrderContext from '../../../../../../context/OrderContext'
+import {useOrderContext} from '../../../../../../context/OrderContext'
 import { checkIfProductIsClicked } from '../../MainRightSide/Menu/helper'
 import { TransitionGroup, CSSTransition} from "react-transition-group"
 import { basketAnimation } from '../../../../../../theme/animations';
@@ -20,7 +19,7 @@ export default function BasketProducts() {
     menu, 
     handleProductSelected, 
     productSelected,
-  } = useContext(OrderContext)
+  } = useOrderContext()
 
   const handleOnDelete = (id) => { 
     handleDeleteBasketProduct(id, username)

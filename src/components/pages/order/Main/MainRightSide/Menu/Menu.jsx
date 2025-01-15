@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { formatPrice } from "../../../../../../utils/maths"
 import { theme } from "../../../../../../theme/index";
 import Card from "../../../../../reusable-ui/Card"
-import { useContext } from "react";
-import OrderContext from "../../../../../../context/OrderContext";
+import {useOrderContext} from "../../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
@@ -29,7 +28,7 @@ const {
   handleAddToBasket,
   handleDeleteBasketProduct,
   handleProductSelected,
-  } = useContext(OrderContext)
+  } = useOrderContext()
 
   //State
 
