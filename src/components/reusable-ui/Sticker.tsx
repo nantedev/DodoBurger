@@ -2,8 +2,8 @@ import styled from "styled-components"
 import { theme } from "../../theme/theme"
 
 type StickerProps = {
-  label: string
-  className: string
+  label?: string
+  className?: string
 }
 
 export default function Sticker({ label = "new", className }: StickerProps) {

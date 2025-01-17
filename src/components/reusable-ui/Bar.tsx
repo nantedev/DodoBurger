@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { theme } from '../../theme/theme';
 
+//1ère méthode
 type BarProps = {
   children: React.ReactNode
 }
+//2ème méthode avec PropsWithChildren
 
 export default function Bar({children}: BarProps) {
   return (
