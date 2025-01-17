@@ -1,16 +1,13 @@
 import styled, { css } from "styled-components"
 import { theme } from "../../theme/theme"
-import React, { JSX } from "react"
+import React, { ComponentPropsWithRef, JSX } from "react"
 
 type TextInputVersion = "normal" | "minimalist"
 
 type TextInputProps = {
-onChange?: React.ChangeEventHandler<HTMLInputElement>,
-className: any,
-Icon: JSX.Element,
-version?: TextInputVersion,
-// ...extraProps: any,
-}
+  Icon: JSX.Element,
+  version?: TextInputVersion,
+} & ComponentPropsWithRef<"input">
 
 
 const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
