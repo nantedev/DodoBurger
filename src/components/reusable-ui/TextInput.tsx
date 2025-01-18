@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { theme } from "../../theme/theme"
+import { theme } from "@/theme/theme";
 import React, { ComponentPropsWithRef, JSX } from "react"
 
 type TextInputVersion = "normal" | "minimalist"

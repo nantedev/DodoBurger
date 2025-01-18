@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../../theme/theme';
+import { theme } from "@/theme/theme";
 
 //1ère méthode
 type BarProps = {
