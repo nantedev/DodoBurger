@@ -19,6 +19,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"] //le raccourcis qu'on veut donner, le dossier source
+    }
   },
   "include": ["src/**/*"],                         
   "exclude": ["node_modules", "build", "dist"]  

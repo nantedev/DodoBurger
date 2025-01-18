@@ -1,8 +1,22 @@
 import styled, { css } from "styled-components"
-import { theme } from "../../theme"
+import { theme } from "@/theme/theme";
 import Button from "./Button"
 import { TiDelete } from "react-icons/ti";
-import { fadeInFromRight, fadeInFromTop } from "../../theme/animations";
+import { fadeInFromRight, fadeInFromTop } from "@/theme/animations";
+
+type CardProps = {
+  title?: string,
+  imageSource?: string,
+  leftDescription?: string,
+  hasDeleteButton?: boolean,
+  onDelete?: React.MouseEventHandler<HTMLButtonElement>,
+  onClick?: React.MouseEventHandler<HTMLDivElement>,
+  isHoverable?: boolean,
+  isSelected?: boolean,
+  onAdd?: React.MouseEventHandler<HTMLButtonElement>,
+  overlapImageSource?: string,
+  isOverlapImageVisible?: boolean,
+}
 
 export default function Card({
   title, 
@@ -16,7 +30,7 @@ export default function Card({
   onAdd,
   overlapImageSource, //Chemin de l'image no-stock
   isOverlapImageVisible,
-  }) {
+  }: CardProps) {
   return (
     <CardStyled onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
         <div className="card" >
@@ -55,9 +69,12 @@ export default function Card({
   )
 }
 
-const CardStyled = styled.div.withConfig({ 
-  shouldForwardProp: (prop) => !['isSelected', 'isHoverable'].includes(prop),
-})`
+type CardStyledProps = {
+  isHoverable?: boolean,
+  isSelected?: boolean,
+}
+
+const CardStyled = styled.div<CardStyledProps>`
   ${({isHoverable}) => isHoverable && hoverableStyle}
   border-radius: ${theme.borderRadius.extraRound};
   height: 330px; //fix extra card height
