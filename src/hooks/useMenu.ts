@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { deepClone, removeObjectById, findIndexById } from "../utils/array"
-import { fakeMenu } from "../fakeData/fakeMenu"
+import { fakeMenu } from "@/fakeData/fakeMenu" 
 import { syncBothMenus } from "../api/product"
 
 export const useMenu = () => { 
@@ -12,7 +12,7 @@ export const useMenu = () => {
         const menuCopy = deepClone(menu)
         //Manip copie du tableau
         const menuUpdated = [newProduct, ...menuCopy]
-        //Update Statez
+        //Update State
         setMenu(menuUpdated)
         syncBothMenus(username, menuUpdated)
       }
