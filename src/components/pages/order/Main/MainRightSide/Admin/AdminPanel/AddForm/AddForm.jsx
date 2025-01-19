@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { useOrderContext } from "../../../../../../../../context/OrderContext"
-import { EMPTY_PRODUCT } from '../../../../../../../../enums/product'
+import { EMPTY_PRODUCT } from '../../../../../../../../constants/product'
 import Form from '../Form/Form'
 import SubmitButton from './SubmitButton'
 import { useSuccessMessage } from '../../../../../../../../hooks/useSuccessMessage'

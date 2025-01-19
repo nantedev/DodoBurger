@@ -2,7 +2,7 @@ import { createContext, useContext, useRef, useState } from "react"
 import { useMenu } from "../hooks/useMenu"
 import { useBasket } from "../hooks/useBasket"
 import { findObjectById } from "../utils/array"
-import { EMPTY_PRODUCT } from "../enums/product"
+import { EMPTY_PRODUCT } from "../constants/product"
 
 // 1. Création du context
 const OrderContext = createContext({
