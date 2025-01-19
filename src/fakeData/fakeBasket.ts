@@ -1,6 +1,8 @@
+import { BasketProduct} from "@/types/Product"
+//@ts-ignore
 import { EMPTY_PRODUCT } from "../enums/product"
 
-export const EMPTY = []
+export const EMPTY: BasketProduct[] = []
 
 export const SMALL = [
   {
