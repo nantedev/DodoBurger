@@ -2,7 +2,6 @@ export const deepClone = <T>(array: T[]): T[] => {
    return JSON.parse(JSON.stringify(array))
 }
 
-
 export const findObjectById = <T extends {id: string}>( id: string, array: T[]): T | undefined => {
    return array.find((itemInArray) => itemInArray.id === id)
 }
