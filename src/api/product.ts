@@ -1,7 +1,8 @@
 import { doc, getDoc, setDoc } from "firebase/firestore"
 import { db } from "./firebase-config"
+import { MenuProduct } from "@/types/Product"
 
-export const syncBothMenus = (userId, menuUpdated) => { 
+export const syncBothMenus = (userId: string, menuUpdated: MenuProduct[]) => { 
     const cachette = doc(db, "users", userId)
 
     const nourriture = {
@@ -12,12 +13,12 @@ export const syncBothMenus = (userId, menuUpdated) => {
     setDoc(cachette, nourriture)
  }
 
- export const getMenu = async (userId) => { 
+ export const getMenu = async (userId:string): Promise<MenuProduct[] | undefined> => { 
     const docRef = doc(db, "users", userId)
 
     const docSnapshot = await getDoc(docRef)
-    if (docSnapshot.exists) {
+    if (docSnapshot.exists()) {
         const { menu } = docSnapshot.data()
-     return menu
+     return menu as MenuProduct[]
     }
 }
