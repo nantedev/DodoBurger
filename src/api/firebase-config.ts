@@ -10,5 +10,5 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_ID,
 }
 
-const app = initializeApp(firebaseConfig)
-export const db = getFirestore(app)
+const app = initializeApp(firebaseConfig) //connection compte firebase
+export const db = getFirestore(app) // connection base de données firestore
