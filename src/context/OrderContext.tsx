@@ -85,4 +85,9 @@ export const OrderContextProvider = ({ children }: PropsWithChildren) => {
 }
 
 // 3. Consommation du context
-export const useOrderContext = () => useContext(OrderContext)
+export const useOrderContext = () => {
+  const orderContextData = useContext(OrderContext)
+  if (orderContextData === undefined) {throw new Error("useOrderContext must be used within a OrderContextProvider")}
+  return orderContextData
+}
+
