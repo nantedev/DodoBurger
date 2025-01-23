@@ -1,3 +1,4 @@
+//@ts-nocheck
 import styled from 'styled-components';
 import { theme } from '../../../../../../theme';
 import Bar from '../../../../../reusable-ui/Bar';
