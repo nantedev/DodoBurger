@@ -1,12 +1,11 @@
 import styled from "styled-components"
 import Profile from "./Profile"
-import ToggleButton from "../../../reusable-ui/ToggleButton"
+import ToggleButton from "@/components/reusable-ui/ToggleButton"
 import { toast } from 'react-toastify'
 import ToastAdmin from "./ToastAdmin"
-import { useContext } from "react"
-import {useOrderContext} from "../../../../context/OrderContext"
+import { useOrderContext } from "@/context/OrderContext"
 
-export default function NavbarRightSide({ username }) {
+export default function NavbarRightSide() {
   const {isModeAdmin, setIsModeAdmin} = useOrderContext()
 
 
