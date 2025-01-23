@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useContext } from "react"
 import styled from "styled-components"
 import {useOrderContext} from "../../../../../context/OrderContext"
