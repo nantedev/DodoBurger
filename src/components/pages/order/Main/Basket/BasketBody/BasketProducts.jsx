@@ -28,7 +28,7 @@ export default function BasketProducts() {
 
 
   return (
-      <TransitionGroup component={BasketProductsStyled} className={"transition-group"}>
+    <TransitionGroup component={BasketProductsStyled} className={"transition-group"}>
         {basket.map((basketProduct) => {
           const menuProduct = findObjectById(basketProduct.id, menu)
           return (
