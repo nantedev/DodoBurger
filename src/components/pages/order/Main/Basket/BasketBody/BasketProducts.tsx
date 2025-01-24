@@ -1,3 +1,4 @@
+//@ts-nocheck
 import styled from 'styled-components';
 import BasketCard from './BasketCard';
 import { BASKET_MESSAGE, DEFAULT_IMAGE } from "../../../../../../constants/product"

@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { isEmpty } from '@/utils/array'
 import {useOrderContext} from "@/context/OrderContext"
 import EmptyBasket from './EmptyBasket'
