@@ -1,8 +1,21 @@
-import React from "react"
 import styled, { css } from "styled-components"
 import { MdDeleteForever } from "react-icons/md"
-import { theme } from "../../../../../../theme"
-import CasinoEffect from "../../../../../reusable-ui/CasinoEffect"
+import { theme } from "@/theme/theme"
+import CasinoEffect from "@/components/reusable-ui/CasinoEffect"
+import Sticker from "@/components/reusable-ui/Sticker"
+
+type BasketCardProps = {
+  title: string;
+  price: string;
+  quantity: number;
+  imageSource: string;
+  className?: string;
+  isClickable?: boolean;
+  onDelete?: React.MouseEventHandler<HTMLDivElement>
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  isSelected?: boolean;
+  isPublicised?: boolean;
+}
 
 export default function BasketCard({ 
   title, 
@@ -12,20 +25,23 @@ export default function BasketCard({
   className, 
   isClickable, 
   onDelete,
-  onClick,
+  onClick, 
   isSelected, 
-}) {
+  isPublicised,
+}: BasketCardProps) {
     return (
         <BasketCardStyled 
         className={className} 
         isClickable={isClickable} 
         onClick={onClick} 
-        isSelected={isSelected}>
+        isSelected={isSelected}
+        >
             <div className="delete-button" onClick={onDelete}>
                 <MdDeleteForever className="icon" />
             </div>
             <div className="image">
                 <img src={imageSource} alt={title} />
+            {isPublicised && <Sticker className="badge-new"/>}
             </div>
             <div className="text-info">
                 <div className="left-info">
@@ -42,9 +58,12 @@ export default function BasketCard({
     )
 }
 
-const BasketCardStyled = styled.div.withConfig({
-  shouldForwardProp: (prop) => !['isClickable', 'isSelected'].includes(prop),
-})`
+type BasketCardStyledProps = {
+  isClickable?: boolean;
+  isSelected?: boolean;
+}
+
+const BasketCardStyled = styled.div<BasketCardStyledProps>`
     cursor: ${({ isClickable }) => (isClickable ? "pointer" : "auto")};
   /* border: 1px solid red; */
     box-sizing: border-box;
