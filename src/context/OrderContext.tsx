@@ -28,7 +28,7 @@ type OrderContextType = {
   setBasket: React.Dispatch<React.SetStateAction<BasketProductQuantity[]>>,
   handleAddToBasket: (idProductToAdd: string, username: string) => void,
   handleDeleteBasketProduct: (idBasketProduct: string, username: string) => void,
-  handleProductSelected: (idProductClicked: string) => Promise<void>
+  handleProductSelected: (idProductClicked: string) => Promise<void>,
 }
 
 // 1. Création du context
@@ -46,7 +46,7 @@ export const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
 
   const handleProductSelected = async (idProductClicked: string) => {
-    if (!menu) return
+    if (!menu || !isModeAdmin) return
     const productClickedOn = findObjectById(idProductClicked, menu)
     if (productClickedOn === undefined) return
     await setIsCollapsed(false)
