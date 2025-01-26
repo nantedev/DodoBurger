@@ -1,24 +1,24 @@
 import styled from "styled-components";
-import { formatPrice } from "../../../../../../utils/maths"
-import { theme } from "../../../../../../theme/index";
-import Card from "../../../../../reusable-ui/Card"
-import {useOrderContext} from "../../../../../../context/OrderContext";
+import { formatPrice } from "@/utils/maths"
+import { theme } from "@/theme/theme";
+import Card from "@/components/reusable-ui/Card";
+import {useOrderContext} from "@/context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
-import { EMPTY_PRODUCT, NO_STOCK_IMAGE } from "../../../../../../constants/product";
-import { findObjectById, isEmpty } from "../../../../../../utils/array"
+import { EMPTY_PRODUCT, NO_STOCK_IMAGE } from "@/constants/product";
 const IMAGE_BY_DEFAUT = "/images/coming-soon.png"
 import Loader from "./Loader"
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { menuAnimation } from "../../../../../../theme/animations";
-import { convertStringToBoolean } from "../../../../../../utils/string"
+import { menuAnimation } from "@/theme/animations";
+import { convertStringToBoolean } from "@/utils/string"
 import RibbonAnimated, { ribbonAnimation } from "./RibbonAnimated";
+import { useParams } from "react-router-dom";
+import { isEmpty } from "@/utils/array";
 
 export default function Menu() {
   
 const {
-  username, 
   menu, 
   isModeAdmin, 
   handleDelete, 
@@ -30,18 +30,23 @@ const {
   handleProductSelected,
   } = useOrderContext()
 
+
+
+
   //State
+  
+  const { username } = useParams()
 
   //Comportements (event handlers)
 
-  const handleAddButton = (event, idProductToAdd) => {
+  const handleAddButton = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, idProductToAdd: string) => {
     event.stopPropagation()
-    const productToAdd = findObjectById(idProductToAdd, menu)
-    handleAddToBasket(productToAdd, username)
+    username && handleAddToBasket(idProductToAdd, username)
 }
 
-const handleCardDelete = (event, idProductToDelete) => {
+const handleCardDelete = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, idProductToDelete: string) => {
   event.stopPropagation()
+  if (!username) return 
   handleDelete(idProductToDelete, username)
   handleDeleteBasketProduct(idProductToDelete, username)
   idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
@@ -54,7 +59,7 @@ const handleCardDelete = (event, idProductToDelete) => {
 
   if (isEmpty(menu)) {
     if (!isModeAdmin) return <EmptyMenuClient />
-    return <EmptyMenuAdmin onReset={() => resetMenu(username)}/>
+    if (username) return <EmptyMenuAdmin onReset={() => resetMenu(username)}/>
   }
 
  
@@ -72,11 +77,11 @@ const handleCardDelete = (event, idProductToDelete) => {
                 imageSource={imageSource ? imageSource : IMAGE_BY_DEFAUT}
                 leftDescription={formatPrice(price)}
                 hasDeleteButton={isModeAdmin}
-                onClick={isModeAdmin ?() => handleProductSelected(id) : null}
+                onClick={() => handleProductSelected(id)}
                 onDelete={(event) => handleCardDelete(event, id)}
                 onAdd={(event) => handleAddButton(event, id)}
                 isHoverable={isModeAdmin}
-                isSelected={checkIfProductIsClicked(id, productSelected)}
+                isSelected={checkIfProductIsClicked(id, productSelected.id)}
                 overlapImageSource={NO_STOCK_IMAGE}
                 isOverlapImageVisible={convertStringToBoolean(isAvailable) === false}
               />
