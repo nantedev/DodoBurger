@@ -4,6 +4,7 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { theme } from "../../../../../../theme/index";
 import {useOrderContext} from "../../../../../../context/OrderContext";
 import { getTabsConfig } from "./tabsConfig";
+import { ADMIN_TAB_LABEL } from "@/constants/tab"
 
 export default function AdminTabs() {
   
@@ -15,7 +16,7 @@ export default function AdminTabs() {
   } = useOrderContext()
   
 
-    const selectTab = (tabSelected) => {
+    const selectTab = (tabSelected: ADMIN_TAB_LABEL) => {
       setIsCollapsed(false) // open the panel
       setCurrentTabSelected(tabSelected) //refresh the selected tab
     }
@@ -25,6 +26,7 @@ const tabs = getTabsConfig()
   return (
     <AdminTabsStyled>
             <Tab 
+            index={ADMIN_TAB_LABEL.CHEVRON}
             label=""
             Icon={isCollapsed ? <FiChevronDown /> : <FiChevronUp />} 
             onClick={() => setIsCollapsed(!isCollapsed)} 
@@ -33,6 +35,7 @@ const tabs = getTabsConfig()
 
         { tabs.map((tab) => (
                     <Tab 
+                    index={tab.index}
                     key={tab.index}
                     label={tab.label}
                     Icon={tab.Icon} 

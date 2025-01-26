@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { theme } from "../../../../../../theme/index";
-import {useOrderContext} from "../../../../../../context/OrderContext";
+import { theme } from "@/theme/theme";
+import {useOrderContext} from "@/context/OrderContext";
 import { getTabsConfig, getTabSelected } from "./tabsConfig";
-import { EMPTY_PRODUCT } from "../../../../../../constants/product";
+import { EMPTY_PRODUCT } from "@/constants/product";
 
 export default function AdminPanel() {
   
@@ -21,8 +21,8 @@ export default function AdminPanel() {
 
 const AdminPanelStyled = styled.div`
     height: 250px;
-    border-bottom-left-radius: ${theme.borderRadius.extra};
-    border-bottom-right-radius: ${theme.borderRadius.extra};
+    border-bottom-left-radius: ${theme.borderRadius.extraRound};
+    border-bottom-right-radius: ${theme.borderRadius.extraRound};
     background: ${theme.colors.white};
     border-top: 1px solid ${theme.colors.greyLight};
     box-shadow: ${theme.shadows.subtle};
