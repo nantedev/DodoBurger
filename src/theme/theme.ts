@@ -53,6 +53,7 @@ const colors = {
     },
     family: {
       stylish: '"Amatic SC", cursive',
+      openSans: '"Open Sans", sans-serif',
       authentique: '"Montserrat", serif',
     },
     shadow: {

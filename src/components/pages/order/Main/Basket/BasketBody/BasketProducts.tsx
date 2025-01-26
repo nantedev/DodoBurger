@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 import BasketCard from './BasketCard';
-import { BASKET_MESSAGE, DEFAULT_IMAGE } from "../../../../../../constants/product"
-import { findObjectById } from "../../../../../../utils/array"
-import {useOrderContext} from '../../../../../../context/OrderContext'
-import { checkIfProductIsClicked } from '../../MainRightSide/Menu/helper'
+import { BASKET_MESSAGE, DEFAULT_IMAGE } from "@/constants/product"
+import { findObjectById } from "@/utils/array"
+import { useOrderContext } from '@/context/OrderContext';
+import { checkIfProductIsClicked } from "@/components/pages/order/Main/MainRightSide/Menu/helper"
 import { TransitionGroup, CSSTransition} from "react-transition-group"
-import { basketAnimation } from '../../../../../../theme/animations';
-import { formatPrice } from '../../../../../../utils/maths';
-import { convertStringToBoolean } from '../../../../../../utils/string';
-import Sticker from "../../../../../reusable-ui/Sticker"
+import { basketAnimation } from '@/theme/animations';
+import { formatPrice } from '@/utils/maths';
+import { convertStringToBoolean } from '@/utils/string';
+import Sticker from '@/components/reusable-ui/Sticker';
+import { useParams } from 'react-router-dom';
+import { MenuProduct } from '@/types/Product';
 
 export default function BasketProducts() {
   const { 
-    username,
     basket, 
     isModeAdmin, 
     handleDeleteBasketProduct, 
@@ -21,16 +22,31 @@ export default function BasketProducts() {
     productSelected,
   } = useOrderContext()
 
-  const handleOnDelete = (id) => { 
+  const { username } = useParams()
+
+  const handleOnDelete = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, id: string) => {
+    event.stopPropagation()
+    if (username === undefined) return
     handleDeleteBasketProduct(id, username)
   }
 
+  const handleCardClick = (isModeAdmin: boolean, basketProductId: string) => {
+    isModeAdmin && handleProductSelected(basketProductId)
+  }
 
+  const getPrice = (menuProduct: MenuProduct) => {
+  return convertStringToBoolean(menuProduct.isAvailable) 
+  ? formatPrice(menuProduct.price) 
+  : BASKET_MESSAGE.NOT_AVAILABLE
+  }
 
   return (
-      <TransitionGroup component={BasketProductsStyled} className={"transition-group"}>
+    <TransitionGroup component={BasketProductsStyled} className={"transition-group"}>
+        <>
         {basket.map((basketProduct) => {
+          if (menu === undefined) return
           const menuProduct = findObjectById(basketProduct.id, menu)
+          if (!menuProduct) return
           return (
             <CSSTransition 
               appear={true} 
@@ -43,17 +59,18 @@ export default function BasketProducts() {
               {...menuProduct}
               imageSource={menuProduct.imageSource ? menuProduct.imageSource : DEFAULT_IMAGE}
               quantity={basketProduct.quantity}
-              onDelete={() => handleOnDelete(basketProduct.id)}
+              onDelete={(event) => handleOnDelete(event, basketProduct.id)}
               isClickable={isModeAdmin}
-              onClick={isModeAdmin ?() => handleProductSelected(basketProduct.id) : null}
-              isSelected={checkIfProductIsClicked(basketProduct.id, productSelected)}
+              onClick={() => handleCardClick(isModeAdmin, basketProduct.id)}
+              isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
               className={"card"}
-              price={convertStringToBoolean(menuProduct.isAvailable) ? formatPrice(menuProduct.price) : BASKET_MESSAGE.NOT_AVAILABLE}
+              price={getPrice(menuProduct)}
               />
               </div>
             </CSSTransition>
           )
         })}
+        </>
       </TransitionGroup>
   );
 }

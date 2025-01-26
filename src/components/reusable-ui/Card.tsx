@@ -7,14 +7,14 @@ import { fadeInFromRight, fadeInFromTop } from "@/theme/animations";
 type CardProps = {
   title?: string,
   imageSource?: string,
-  leftDescription?: string,
+  leftDescription: string,
   hasDeleteButton?: boolean,
   onDelete?: React.MouseEventHandler<HTMLButtonElement>,
   onClick?: React.MouseEventHandler<HTMLDivElement>,
   isHoverable?: boolean,
   isSelected?: boolean,
   onAdd?: React.MouseEventHandler<HTMLButtonElement>,
-  overlapImageSource?: string,
+  overlapImageSource: string,
   isOverlapImageVisible?: boolean,
 }
 

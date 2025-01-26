@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Bar from '../../../../reusable-ui/Bar';
-import { theme } from '../../../../../theme';
+import Bar from '@/components/reusable-ui/Bar';
+import { theme } from '@/theme/theme';
 
 export default function BasketFooter() {
   return (
