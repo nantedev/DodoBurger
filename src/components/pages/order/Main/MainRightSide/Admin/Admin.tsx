@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import AdminTabs from "./AdminTabs";
 import AdminPanel from "./AdminPanel";
-import {useOrderContext} from "../../../../../../context/OrderContext";
-import { fadeInFromBottom } from "../../../../../../theme/animations";
-import { theme } from "../../../../../../theme";
+import {useOrderContext} from "@/context/OrderContext";
+import { fadeInFromBottom } from "@/theme/animations";
+import { theme } from "@/theme/theme";
 
 export default function Admin() {
  

@@ -3,7 +3,12 @@ import { theme } from '../../../../../../../../theme/index';
 import { imgAnimation } from '../../../../../../../../theme/animations';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-export default function ImagePreview({imageSource, title}) {
+type ImagePreviewProps = {
+  imageSource: string;
+  title: string;
+};
+
+export default function ImagePreview({imageSource, title}: ImagePreviewProps) {
   return (
     <TransitionGroup component={ImagePreviewStyled} >
         <CSSTransition appear classNames="image-animation" key={title} timeout={500}>

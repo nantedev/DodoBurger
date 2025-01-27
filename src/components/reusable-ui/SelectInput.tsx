@@ -11,7 +11,6 @@ type SelectInputOption = {
   type SelectInputProps = {
     options: SelectInputOption[],
     Icon?: JSX.Element,
-    className?: string,
   } & React.ComponentProps<"select">
 
 export default function SelectInput({

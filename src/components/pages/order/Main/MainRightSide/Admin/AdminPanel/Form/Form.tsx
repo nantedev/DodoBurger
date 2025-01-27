@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import ImagePreview from './ImagePreview';
 import React from 'react';
-import { Inputs } from './Inputs';
+import { Inputs, InputsProps } from './Inputs';
 
+type FormProps = {
+  onSubmit?: React.FormEventHandler<HTMLFormElement>,
+  children: React.ReactNode,
+} & InputsProps
 
-const Form = React.forwardRef(({product, onSubmit, onChange, onFocus, onBlur, children}, ref) => {
+const Form = React.forwardRef<HTMLInputElement, FormProps>(({product, onSubmit, onChange, onFocus, onBlur, children}, ref) => {
   //State(empty)
 
   //Comportement(empty)
