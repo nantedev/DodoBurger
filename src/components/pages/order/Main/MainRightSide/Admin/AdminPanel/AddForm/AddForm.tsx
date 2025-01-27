@@ -1,9 +1,9 @@
-import { useOrderContext } from "../../../../../../../../context/OrderContext"
-import { EMPTY_PRODUCT } from '../../../../../../../../constants/product'
+import { useOrderContext } from "@/context/OrderContext"
+import { EMPTY_PRODUCT } from '@/constants/product'
 import Form from '../Form/Form'
 import SubmitButton from './SubmitButton'
-import { useSuccessMessage } from '../../../../../../../../hooks/useSuccessMessage'
-import { replaceFrenchCommaWithDot } from '../../../../../../../../utils/maths'
+import { useSuccessMessage } from '@/hooks/useSuccessMessage'
+import { replaceFrenchCommaWithDot } from '@/utils/maths'
 import { useParams } from 'react-router-dom'
 
 

@@ -1,9 +1,9 @@
-import {useOrderContext} from '../../../../../../../../context/OrderContext'
+import {useOrderContext} from '@/context/OrderContext'
 import Form from "../Form/Form"
 import EditInfoMessage from './EditInfoMessage'
 import { useState } from 'react'
 import SavingMessage from './SavingMessage'
-import { useSuccessMessage } from '../../../../../../../../hooks/useSuccessMessage'
+import { useSuccessMessage } from '@/hooks/useSuccessMessage'
 import { useParams } from 'react-router-dom'
 
 export default function EditForm() {
