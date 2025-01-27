@@ -1,11 +1,18 @@
 import styled from 'styled-components';
-import TextInput from '../../../../../../../reusable-ui/TextInput';
+import TextInput from '@/components/reusable-ui/TextInput';
 import { getTextInputConfig, getSelectInputConfig } from './inputConfig';
-import SelectInput from '../../../../../../../reusable-ui/SelectInput';
+import SelectInput from '@/components/reusable-ui/SelectInput';
 import React from 'react';
+import { MenuProduct } from '@/types/Product';
 
+export type InputsProps = {
+  product: MenuProduct
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLSelectElement>
+  onFocus?: React.FocusEventHandler<HTMLInputElement | HTMLSelectElement>
+  onBlur?: React.FocusEventHandler<HTMLInputElement | HTMLSelectElement>
+}
 
-export const Inputs = React.forwardRef(({product, onChange, onFocus, onBlur}, ref) => {
+export const Inputs = React.forwardRef<HTMLInputElement, InputsProps>(({product, onChange, onFocus, onBlur}, ref) => {
 
   const textInputs = getTextInputConfig(product)
   const selectInputs = getSelectInputConfig(product)
@@ -26,7 +33,8 @@ export const Inputs = React.forwardRef(({product, onChange, onFocus, onBlur}, re
               />
              ))}
 
-             {selectInputs.map((select) => (
+             {
+             selectInputs.map((select) => (
                   <SelectInput  
                   {...select} 
                   key={select.id} 
