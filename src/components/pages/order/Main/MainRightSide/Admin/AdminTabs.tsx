@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Tab from "../../../../../reusable-ui/Tab";
+import Tab from "@/components/reusable-ui/Tab";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { theme } from "../../../../../../theme/index";
-import {useOrderContext} from "../../../../../../context/OrderContext";
+import { theme } from "@/theme/theme";
+import {useOrderContext} from "@/context/OrderContext";
 import { getTabsConfig } from "./tabsConfig";
 import { ADMIN_TAB_LABEL } from "@/constants/tab"
 

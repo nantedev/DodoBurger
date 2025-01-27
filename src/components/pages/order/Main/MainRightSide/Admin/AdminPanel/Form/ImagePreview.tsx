@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { theme } from '../../../../../../../../theme/index';
-import { imgAnimation } from '../../../../../../../../theme/animations';
+import { theme } from '@/theme/theme';
+import { imgAnimation } from '@/theme/animations';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 type ImagePreviewProps = {
