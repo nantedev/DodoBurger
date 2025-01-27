@@ -1,8 +1,7 @@
-import React from 'react'
 import SubmitMessage from './SubmitMessage'
-import Button from '../../../../../../../reusable-ui/Button'
+import Button from '@/components/reusable-ui/Button'
 
-export default function SubmitButton({isSubmitted}) {
+export default function SubmitButton({isSubmitted} : {isSubmitted: boolean}) {
   return (
     <>
           <Button 
