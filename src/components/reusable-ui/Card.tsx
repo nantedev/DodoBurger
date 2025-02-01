@@ -32,7 +32,7 @@ export default function Card({
   isOverlapImageVisible,
   }: CardProps) {
   return (
-    <CardStyled onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
+    <CardStyled onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
         <div className="card" >
           {hasDeleteButton && (
             <button
@@ -70,12 +70,12 @@ export default function Card({
 }
 
 type CardStyledProps = {
-  isHoverable?: boolean,
-  isSelected?: boolean,
+  $isHoverable?: boolean,
+  $isSelected?: boolean,
 }
 
 const CardStyled = styled.div<CardStyledProps>`
-  ${({isHoverable}) => isHoverable && hoverableStyle}
+  ${({$isHoverable}) => $isHoverable && hoverableStyle}
   border-radius: ${theme.borderRadius.extraRound};
   height: 330px; //fix extra card height
 
@@ -207,7 +207,7 @@ const CardStyled = styled.div<CardStyledProps>`
         }
       }
     }
-    ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyle}
+    ${({ $isHoverable, $isSelected }) => $isHoverable && $isSelected && selectedStyle}
   }   
 `;
 
