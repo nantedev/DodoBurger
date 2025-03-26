@@ -18,6 +18,7 @@ Dodo Burger is a web application built using **React with TypeScript**. It provi
 - **Firebase** (Authentication & Firestore Database)
 - **React Router** (Navigation)
 - **Styled Components**
+- **Context**
 
 
 ## Installation & Setup 🏗️
