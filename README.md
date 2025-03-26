@@ -1,3 +1,5 @@
+![Dodoburger mickael nantedev e-commerce](./Dodoburger-nantedev.png)
+
 # Dodo Burger 🍔
 
 Dodo Burger is a web application built using **React with TypeScript**. It provides a seamless user experience for browsing and managing products. The project integrates **Firebase** for authentication and real-time database storage, ensuring data persistence.
