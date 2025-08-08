@@ -1,8 +1,7 @@
-import styled, { css } from "styled-components"
-import { MdDeleteForever } from "react-icons/md"
-import { theme } from "@/theme/theme"
-import CasinoEffect from "@/components/reusable-ui/CasinoEffect"
-import Sticker from "@/components/reusable-ui/Sticker"
+import styled, { css } from "styled-components";
+import { MdDeleteForever } from "react-icons/md";
+import { theme } from "@/theme/theme";
+import CasinoEffect from "@/components/reusable-ui/CasinoEffect";
 
 type BasketCardProps = {
   title: string;
@@ -11,121 +10,119 @@ type BasketCardProps = {
   imageSource: string;
   className?: string;
   isClickable?: boolean;
-  onDelete?: React.MouseEventHandler<HTMLDivElement>
+  onDelete?: React.MouseEventHandler<HTMLDivElement>;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
   isSelected?: boolean;
   isPublicised?: boolean;
-}
+};
 
-export default function BasketCard({ 
-  title, 
-  price, 
-  quantity, 
-  imageSource, 
-  className, 
-  isClickable, 
+export default function BasketCard({
+  title,
+  price,
+  quantity,
+  imageSource,
+  className,
+  isClickable,
   onDelete,
-  onClick, 
-  isSelected, 
-  isPublicised,
+  onClick,
+  isSelected,
 }: BasketCardProps) {
-    return (
-        <BasketCardStyled 
-        className={className} 
-        $isClickable={isClickable} 
-        onClick={onClick} 
-        $isSelected={isSelected}
-        >
-            <div className="delete-button" onClick={onDelete}>
-                <MdDeleteForever className="icon" />
-            </div>
-            <div className="image">
-                <img src={imageSource} alt={title} />
-            {isPublicised && <Sticker className="badge-new"/>}
-            </div>
-            <div className="text-info">
-                <div className="left-info">
-                    <div className="title">
-                        <span>{title}</span>
-                    </div>
-                    <span className="price">{price}</span>
-                </div>
-                <div className="quantity">
-                    <CasinoEffect count={`x ${quantity}`}/>
-                </div>
-            </div>
-        </BasketCardStyled>
-    )
+  return (
+    <BasketCardStyled
+      className={className}
+      $isClickable={isClickable}
+      onClick={onClick}
+      $isSelected={isSelected}
+    >
+      <div className="delete-button" onClick={onDelete}>
+        <MdDeleteForever className="icon" />
+      </div>
+      <div className="image">
+        <img src={imageSource} alt={title} />
+      </div>
+      <div className="text-info">
+        <div className="left-info">
+          <div className="title">
+            <span>{title}</span>
+          </div>
+          <span className="price">{price}</span>
+        </div>
+        <div className="quantity">
+          <CasinoEffect count={`x ${quantity}`} />
+        </div>
+      </div>
+    </BasketCardStyled>
+  );
 }
 
 type BasketCardStyledProps = {
   $isClickable?: boolean;
   $isSelected?: boolean;
-}
+};
 
 const BasketCardStyled = styled.div<BasketCardStyledProps>`
-    cursor: ${({ $isClickable }) => ($isClickable ? "pointer" : "auto")};
+  cursor: ${({ $isClickable }) => ($isClickable ? "pointer" : "auto")};
   /* border: 1px solid red; */
+  box-sizing: border-box;
+  height: 86px;
+  padding: 8px 16px;
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  border-radius: ${theme.borderRadius.round};
+  background: ${theme.colors.white};
+  box-shadow: ${theme.shadows.cardBasket};
+  position: relative;
+  .image {
     box-sizing: border-box;
-    height: 86px;
-    padding: 8px 16px;
-    display: grid;
-    grid-template-columns: 30% 1fr;
-    border-radius: ${theme.borderRadius.round};
-    background: ${theme.colors.white};
-    box-shadow: ${theme.shadows.cardBasket};
-    position: relative;
-    .image {
-        box-sizing: border-box;
-        height: 70px;
-        /* border: 1px solid red; */
-        img {
-        padding: 5px;
-        box-sizing: border-box;
-        height: 100%;
-        width: 100%;
-        object-fit: contain;
-        }
+    height: 70px;
+    /* border: 1px solid red; */
+    img {
+      padding: 5px;
+      box-sizing: border-box;
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
     }
-    .text-info {
-        user-select: none;
-        box-sizing: border-box;
-        /* background: green; */
-        /* border: 1px solid green; */
-        display: grid;
-        grid-template-columns: 70% 1fr;
-        font-size: ${theme.fonts.size.P0};
-        color: ${theme.colors.primary};
-        .left-info {
-        display: grid;
-        grid-template-rows: 60% 40%;
-        margin-left: 21px;
+  }
+  .text-info {
+    user-select: none;
+    box-sizing: border-box;
+    /* background: green; */
+    /* border: 1px solid green; */
+    display: grid;
+    grid-template-columns: 70% 1fr;
+    font-size: ${theme.fonts.size.P0};
+    color: ${theme.colors.primary};
+    .left-info {
+      display: grid;
+      grid-template-rows: 60% 40%;
+      margin-left: 21px;
+      align-items: center;
+      .title {
+        display: flex;
         align-items: center;
-        .title {
-            display: flex;
-            align-items: center;
-            /* background: yellow; */
-            font-family: ${theme.fonts.family.stylish};
-            font-size: ${theme.fonts.size.P3};
-            line-height: 32px;
-            font-weight: ${theme.fonts.weights.bold};
-            color: ${theme.colors.dark};
-            min-width: 0;
-            span {
-                overflow: hidden;
-                /* width: 100%; */
-                white-space: nowrap;
-                text-overflow: ellipsis;
-            }
+        /* background: yellow; */
+        font-family: ${theme.fonts.family.stylish};
+        font-size: ${theme.fonts.size.P3};
+        line-height: 32px;
+        font-weight: ${theme.fonts.weights.bold};
+        color: ${theme.colors.dark};
+        min-width: 0;
+        span {
+          overflow: hidden;
+          /* width: 100%; */
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
-        .price {
-            /* background: blue; */
-            font-size: ${theme.fonts.size.SM};
-            font-weight: ${theme.fonts.weights.medium};
-            font-family: ${theme.fonts.family.openSans};
-            /* color: ${theme.colors.white}; */
-        }
-        }
+      }
+      .price {
+        /* background: blue; */
+        font-size: ${theme.fonts.size.SM};
+        font-weight: ${theme.fonts.weights.medium};
+        font-family: ${theme.fonts.family.openSans};
+        /* color: ${theme.colors.white}; */
+      }
+    }
     .quantity {
       box-sizing: border-box;
       /* border: 1px solid lightblue; */
@@ -137,7 +134,7 @@ const BasketCardStyled = styled.div<BasketCardStyledProps>`
       margin-right: 20px;
       font-size: ${theme.fonts.size.SM};
     }
-    }
+  }
   .delete-button {
     display: none;
     z-index: 1;
@@ -176,17 +173,19 @@ const BasketCardStyled = styled.div<BasketCardStyledProps>`
           .icon {
             color: ${theme.colors.white};
           }
-        } 
+        }
       }
     }
   }
 
-  ${({ $isClickable , $isSelected }) => $isClickable && $isSelected && selectedStyled }
-`
+  ${({ $isClickable, $isSelected }) =>
+    $isClickable && $isSelected && selectedStyled}
+`;
 
 const selectedStyled = css`
   background: ${theme.colors.primary};
-  .price, .quantity {
+  .price,
+  .quantity {
     color: ${theme.colors.white};
   }
-  `
+`;
