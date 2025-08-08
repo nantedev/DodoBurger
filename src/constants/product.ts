@@ -11,8 +11,8 @@ export const EMPTY_PRODUCT: MenuProduct = {
   
 
 export const DEFAULT_TITLE = "NEW PRODUCT";
-export const DEFAULT_IMAGE = "/public/images/coming-soon.png";
-export const NO_STOCK_IMAGE = "/public/images/stock-epuise.png";
+export const DEFAULT_IMAGE = "/images/coming-soon.png";
+export const NO_STOCK_IMAGE = "/images/stock-epuise.png";
 
 
 export const BASKET_MESSAGE = {
